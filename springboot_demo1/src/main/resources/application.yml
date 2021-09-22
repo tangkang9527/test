@@ -1,0 +1,19 @@
+# YML文件的语法
+# 1.数据结构   key-value结构
+# 2.写法:     key:(空格)value
+# 3.层级代码结构,注意缩进 !!!!!
+# 4.字符集  文件读取时,默认采用UTF-8编码 可以写中文
+# 规则: 命名时最好指定前缀.
+server:
+  port: 8080
+
+#指定业务的key
+mysql:
+  username: root|
+  password: root||
+
+
+
+
+
+
