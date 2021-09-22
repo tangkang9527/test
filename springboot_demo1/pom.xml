@@ -11,6 +11,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot_demo1</name>
     <description>springboot_demo1</description>
+    <!--JSP  JAVA+HTML 打包为war -->
+    <!--<packaging>jar</packaging>-->
 
     <properties>
         <java.version>1.8</java.version>
@@ -22,16 +24,19 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <!--SpringBoot的启动项   web 相当于引入mvc框架
+                思想: "开箱即用"!!!!
+                说明: 只需要引入jar包,简单的配置即可以使用该功能
+             -->
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <!--SpringBoot整合测试方法API-->
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <dependencyManagement>
