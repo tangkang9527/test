@@ -1,7 +1,7 @@
 #指定环境的默认配置
 spring:
   profiles:
-    active: prod
+    active: dev
 ---
 #为环境定义名称
 server:
