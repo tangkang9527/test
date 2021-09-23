@@ -1,5 +1,6 @@
 package com.jt.mapper;
 
+
 import com.jt.pojo.DemoUser;
 
 import java.util.List;
@@ -15,4 +16,5 @@ public interface DemoUserMapper {
     //1.查询所有的表数据
     public List<DemoUser> findAll();
 
+    DemoUser findOne(int id);
 }

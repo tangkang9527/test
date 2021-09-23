@@ -8,11 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-
 public class TestMybatis {
 
     /**
@@ -37,6 +37,29 @@ public class TestMybatis {
         //获取数据
         List<DemoUser> userList = demoUserMapper.findAll();
         System.out.println(userList);
+        //关闭链接
+        sqlSession.close();
+    }
+
+    /***
+     *  需求: 根据ID查询数据库记录   id=1的数据
+     */
+    @Test
+    public void testFindOne() throws IOException {
+        //指定配置文件地址
+        String resource = "mybatis/mybatis-config.xml";
+        //通过IO流 加载指定的配置文件
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        //动态生成SqlSessionFactory
+        SqlSessionFactory sqlSessionFactory =
+                new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        //获取接口
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        int id = 1;
+        DemoUser demoUser = demoUserMapper.findOne(id);
+        System.out.println(demoUser);
         //关闭链接
         sqlSession.close();
     }

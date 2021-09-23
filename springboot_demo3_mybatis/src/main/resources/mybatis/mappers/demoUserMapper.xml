@@ -16,8 +16,13 @@
         select id,name,age,sex from demo_user
     </select>
 
-   <!-- <insert id=""></insert>
-    <update id=""></update>
-    <delete id=""></delete>-->
+    <!--
+         parameterType: 参数类型
+         mybatis中通过 #{} 获取参数
+         resultType: 返回值结果对象
+    -->
+    <select id="findOne" parameterType="int" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user where id = #{id}
+    </select>
 
 </mapper>
