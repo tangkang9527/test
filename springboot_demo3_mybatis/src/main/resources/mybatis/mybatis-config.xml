@@ -24,8 +24,11 @@
 
     </environments>
 
-    <!--Mybatis加载Mapper映射文件-->
+    <!--Mybatis加载Mapper映射文件
+        1.mapper映射文件是有顺序的 位置不要随便切换
+        2.通过resource 加载指定的xml映射文件
+    -->
     <mappers>
-        <mapper resource="mybatis/mappers/UserMapper.xml"/>
+        <mapper resource="mybatis/mappers/demoUserMapper.xml"/>
     </mappers>
 </configuration>
