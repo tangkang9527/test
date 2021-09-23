@@ -37,5 +37,7 @@ public class TestMybatis {
         //获取数据
         List<DemoUser> userList = demoUserMapper.findAll();
         System.out.println(userList);
+        //关闭链接
+        sqlSession.close();
     }
 }
