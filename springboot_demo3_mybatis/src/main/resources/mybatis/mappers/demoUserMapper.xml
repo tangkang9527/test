@@ -58,4 +58,13 @@
         select * from demo_user where sex= #{sex} and age > #{age}
     </select>
 
+    <!--
+        根据指定的字段排序
+    -->
+    <select id="findOrder" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user order by ${column}
+    </select>
+
+
+
 </mapper>

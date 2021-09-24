@@ -27,4 +27,6 @@ public interface DemoUserMapper {
     List<DemoUser> findBySA2(@Param("sex") String sex, @Param("age") int age);
 
     List<DemoUser> findBySA3(Map<String, Object> map);
+
+    List<DemoUser> findOrder(String column);
 }

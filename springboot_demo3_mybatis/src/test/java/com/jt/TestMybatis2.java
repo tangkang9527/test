@@ -113,5 +113,19 @@ public class TestMybatis2 {
             sqlSession.close();
       }
 
+      /**
+       *  需求: 要求按照指定的age排序
+       *  Sql: select * from demo_user order by age
+       *  #号和$符用法.
+       */
+      @Test
+      public void testFindOrder(){
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+            String column = "age";
+            List<DemoUser> list = demoUserMapper.findOrder(column);
+            System.out.println(list);
+            sqlSession.close();
+      }
 
 }
