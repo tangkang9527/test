@@ -65,6 +65,13 @@
         select * from demo_user order by ${column}
     </select>
 
+    <!--
+        需求: 需要返回影响的行数.
+              mybatis执行"更新"操作时,自动的返回影响的行数
+    -->
+    <insert id="saveUser">
+        insert into demo_user value (null,#{name},#{age},#{sex})
+    </insert>
 
 
 </mapper>

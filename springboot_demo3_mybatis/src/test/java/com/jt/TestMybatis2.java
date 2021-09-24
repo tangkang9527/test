@@ -128,4 +128,27 @@ public class TestMybatis2 {
             sqlSession.close();
       }
 
+      /**
+       * 需求: 实现用户入库操作
+       * 关于事务说明:
+       *    mybatis中的"更新"操作,默认事务都是开启的,如果进行更新操作,
+       *    则必须提交事务.
+       */
+      @Test
+      public void testSaveUser(){
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+            //数据库主键自增,所以对象的ID可以为null.
+            DemoUser user = new DemoUser(null,"佛媛",99,"女");
+            int rows = demoUserMapper.saveUser(user);
+            if(rows > 0){
+                  System.out.println("影响的行数:"+rows);
+                  //事务提交
+                  sqlSession.commit();
+            }
+            sqlSession.close();
+      }
+
+
+
 }

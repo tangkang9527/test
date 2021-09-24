@@ -29,4 +29,6 @@ public interface DemoUserMapper {
     List<DemoUser> findBySA3(Map<String, Object> map);
 
     List<DemoUser> findOrder(String column);
+
+    int saveUser(DemoUser user);
 }
