@@ -7,7 +7,7 @@
  -->
 <mapper namespace="com.jt.mapper.DemoUserMapper">
 
-    <select id="findAll" resultType="com.jt.pojo.DemoUser">
+    <select id="findAll" resultType="com.jt.pojo.DemoUser">准备一个新项目
         select id,name,age,sex from demo_user
     </select>
 
@@ -24,6 +24,32 @@
         <![CDATA[  select * from demo_user where age > #{minAge} and age < #{maxAge}]]>
     </select>
 
+    <!--
+        需求: 批量删除多个数据
+        难点: 如果使用#{集合}获取的是集合对象的整体.删除无效.
+        思路: 将数组拆分为单个数据. 可以通过遍历的方式操作
+        语法: mybatis为了参数取值方便,特意封装了遍历的标签 foreach
+        关于标签参数说明:
+            <foreach collection=""></foreach>
+            1.如果传递的参数是数组,     则collection="array"
+            2.如果传递的参数是list集合, 则collection="list"
+            3.如果传递的参数是Map集合,  则collection="map中的key"
 
+        标签属性说明:
+            1.collection 集合的名称
+            2.item 每次遍历的数据的形参变量
+            3.open 循环的开始标签
+            4.close 循环的结束标签
+            5.index 循环遍历下标 一般不用
+            6.separator 循环遍历的分割符
+    -->
+    <delete id="deleteIds">
+        delete from demo_user where id in (
+        <foreach collection="array" item="id"
+                 separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
 
 </mapper>

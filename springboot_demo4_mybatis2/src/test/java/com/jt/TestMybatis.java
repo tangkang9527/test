@@ -56,4 +56,22 @@ public class TestMybatis {
         sqlSession.close();
     }
 
+    /**
+     * 例如: 删除id=232/233/234的数据?
+     *  Sql: delete from demo_user where id in (232,233,234)
+     * 规则: 如果遇到相同的多个数据,则一般采用集合的方式封装数据.
+     * 封装方式:
+     *      1. array
+     *      2. list
+     *      3. map<List>
+     */
+    @Test
+    public void testDeleteIds(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        //将数据封装为数组
+        int[] ids = {232,233,234};
+        demoUserMapper.deleteIds(ids);
+        System.out.println("删除操作成功!!!");
+    }
 }

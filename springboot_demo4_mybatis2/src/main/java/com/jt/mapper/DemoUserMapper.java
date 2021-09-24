@@ -19,4 +19,6 @@ public interface DemoUserMapper {
     public List<DemoUser> findAll();
 
     List<DemoUser> findByAge(Map<String, Object> map);
+
+    void deleteIds(int[] ids);
 }
