@@ -4,6 +4,7 @@ package com.jt.mapper;
 import com.jt.pojo.DemoUser;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,4 +22,8 @@ public interface DemoUserMapper {
     List<DemoUser> findByAge(Map<String, Object> map);
 
     void deleteIds(int[] ids);
+
+    void deleteList(List list);
+
+    void deleteMap(HashMap map);
 }

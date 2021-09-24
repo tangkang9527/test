@@ -51,4 +51,21 @@
         )
     </delete>
 
+    <!--删除List集合中的数据-->
+    <delete id="deleteList">
+        delete from demo_user where id in (
+        <foreach collection="list" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
+
+    <!--删除List集合中的数据 如何是map,则写map中的key-->
+    <delete id="deleteMap">
+        delete from demo_user where id in (
+        <foreach collection="ids" item="id" separator=",">
+            #{id}
+        </foreach>
+        )
+    </delete>
 </mapper>

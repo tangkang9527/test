@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +73,35 @@ public class TestMybatis {
         //将数据封装为数组
         int[] ids = {232,233,234};
         demoUserMapper.deleteIds(ids);
+        System.out.println("删除操作成功!!!");
+    }
+
+    @Test
+    public void testDeleteList(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        List list = new ArrayList();
+        list.add(232);
+        list.add(233);
+        list.add(234);
+        demoUserMapper.deleteList(list);
+        System.out.println("删除操作成功!!!");
+    }
+
+    /*
+    * 说明: 有时业务需求导致需要使用map封装list集合
+    */
+    @Test
+    public void testDeleteMap(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        List list = new ArrayList();
+        list.add(232);
+        list.add(233);
+        list.add(234);
+        HashMap map = new HashMap();
+        map.put("ids",list);
+        demoUserMapper.deleteMap(map);
         System.out.println("删除操作成功!!!");
     }
 }
