@@ -18,4 +18,5 @@ public interface DemoUserMapper {
     //1.查询所有的表数据
     public List<DemoUser> findAll();
 
+    List<DemoUser> findByAge(Map<String, Object> map);
 }

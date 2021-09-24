@@ -13,7 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 public class TestMybatis {
 
     //定义公共的属性
@@ -36,4 +39,21 @@ public class TestMybatis {
         System.out.println(list);
         sqlSession.close();
     }
+
+    /**
+     * 需求: 查询age> 18 and age< 100 的用户信息.
+     * 规则: 如果不能使用对象封装,则一般使用Map集合
+     */
+    @Test
+    public void testSelect01(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        Map<String,Object> map = new HashMap<>();
+        map.put("minAge",18);
+        map.put("maxAge",100);
+        List<DemoUser> userList = demoUserMapper.findByAge(map);
+        System.out.println(userList);
+        sqlSession.close();
+    }
+
 }

@@ -11,4 +11,19 @@
         select id,name,age,sex from demo_user
     </select>
 
+    <!--根据age查询数据
+        xml文件中的转义字符.
+            &gt;  > 大于
+            &lt;  < 小于
+            &amp;  & 号
+        说明:如果sql中有大量的转义字符 建议使用转义标签体
+        语法: <![CDATA[  xxx内容 报文   ]]>
+    -->
+    <select id="findByAge" resultType="com.jt.pojo.DemoUser">
+        <!--select * from demo_user where age > #{minAge} and age &lt; #{maxAge}-->
+        <![CDATA[  select * from demo_user where age > #{minAge} and age < #{maxAge}]]>
+    </select>
+
+
+
 </mapper>
