@@ -2,8 +2,10 @@ package com.jt.mapper;
 
 
 import com.jt.pojo.DemoUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 说明:
@@ -19,4 +21,10 @@ public interface DemoUserMapper {
     DemoUser findOne(int id);
 
     List<DemoUser> findByName(String name);
+
+    List<DemoUser> findBySA(DemoUser user);
+    //利用@Param注解 将参数封装为Map集合
+    List<DemoUser> findBySA2(@Param("sex") String sex, @Param("age") int age);
+
+    List<DemoUser> findBySA3(Map<String, Object> map);
 }

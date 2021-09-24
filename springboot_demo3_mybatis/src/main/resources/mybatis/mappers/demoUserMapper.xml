@@ -32,7 +32,30 @@
         select * from demo_user where name = #{name}
     </select>
 
+    <!--
+        查询sex=女 and age > 18岁
+        参数: DemoUser user 意图:传递属性的
+        规则: 如果传递的参数是对象,则通过#{属性} 可以直接获取数据.
+    -->
+    <select id="findBySA" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user where sex= #{sex} and age > #{age}
+    </select>
 
+    <!--
+        如果参数被@Param("sex") String sex修饰
+        则#{参数key}即可获取数据
+    -->
+    <select id="findBySA2" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user where sex= #{sex} and age > #{age}
+    </select>
 
+    <!--
+        Map<String, Object> map
+            sex=女  age=18
+        规则: 如果参数是一个map集合,则通过#{key}获取数据.
+    -->
+    <select id="findBySA3" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user where sex= #{sex} and age > #{age}
+    </select>
 
 </mapper>

@@ -2,6 +2,7 @@ package com.jt;
 
 import com.jt.mapper.DemoUserMapper;
 import com.jt.pojo.DemoUser;
+import org.apache.catalina.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestMybatis2 {
 
@@ -44,7 +47,6 @@ public class TestMybatis2 {
       /**
        * 作业:
        *      1. 查询name="王昭君"的用户
-       *      2. 查询sex=女 and age > 18岁
        */
 
       @Test
@@ -58,5 +60,58 @@ public class TestMybatis2 {
             System.out.println(list);
             sqlSession.close();
       }
+
+      /**
+       * 需求 :2. 查询sex=女 and age > 18岁
+       * 方式1: User对象封装
+       */
+      @Test
+      public void testFindBySA(){
+            //保证每个线程都能获取一个链接
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+            //编程习惯: 面向对象
+            DemoUser user = new DemoUser();
+            user.setAge(18).setSex("女");
+            List<DemoUser> list = demoUserMapper.findBySA(user);
+            System.out.println(list);
+            sqlSession.close();
+      }
+
+      /**
+       *    sex=女 and age > 18
+       *    方式2: @Param方式封装.
+       */
+
+      @Test
+      public void testFindBySA2(){
+            //保证每个线程都能获取一个链接
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+            String sex = "女";
+            int age = 18;
+            List<DemoUser> list = demoUserMapper.findBySA2(sex,age);
+            System.out.println(list);
+            sqlSession.close();
+      }
+
+      /**
+       *    sex=女 and age > 18
+       *    方式3: map集合封装
+       */
+
+      @Test
+      public void testFindBySA3(){
+            //保证每个线程都能获取一个链接
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+            Map<String,Object> map = new HashMap<>();
+            map.put("sex","女");
+            map.put("age",18);
+            List<DemoUser> list = demoUserMapper.findBySA3(map);
+            System.out.println(list);
+            sqlSession.close();
+      }
+
 
 }
