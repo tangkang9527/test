@@ -17,4 +17,6 @@ public interface DemoUserMapper {
     public List<DemoUser> findAll();
 
     DemoUser findOne(int id);
+
+    List<DemoUser> findByName(String name);
 }

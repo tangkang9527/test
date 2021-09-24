@@ -25,4 +25,14 @@
         select * from demo_user where id = #{id}
     </select>
 
+    <!--说明: parameterType其中的类型程序可以根据参数自动判断,所以可以省略不写
+             根据名称,动态取值 使用#{}关键字
+      -->
+    <select id="findByName" resultType="com.jt.pojo.DemoUser">
+        select * from demo_user where name = #{name}
+    </select>
+
+
+
+
 </mapper>
