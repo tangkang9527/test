@@ -72,6 +72,10 @@
     <insert id="saveUser">
         insert into demo_user value (null,#{name},#{age},#{sex})
     </insert>
-
+    <!--
+        作业:
+            1.把id=1 的数据 name改为"守山大使" age=5000
+            2.将name="佛媛"的数据删除.
+     -->
 
 </mapper>

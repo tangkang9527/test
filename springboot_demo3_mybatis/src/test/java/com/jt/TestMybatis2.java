@@ -136,7 +136,7 @@ public class TestMybatis2 {
        */
       @Test
       public void testSaveUser(){
-            SqlSession sqlSession = sqlSessionFactory.openSession();
+            SqlSession sqlSession = sqlSessionFactory.openSession(true);
             DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
             //数据库主键自增,所以对象的ID可以为null.
             DemoUser user = new DemoUser(null,"佛媛",99,"女");
@@ -148,7 +148,4 @@ public class TestMybatis2 {
             }
             sqlSession.close();
       }
-
-
-
 }
