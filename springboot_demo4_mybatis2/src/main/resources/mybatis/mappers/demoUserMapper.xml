@@ -45,10 +45,9 @@
     -->
     <delete id="deleteIds">
         delete from demo_user where id in (
-        <foreach collection="array" item="id"
-                 separator=",">
-            #{id}
-        </foreach>
+            <foreach collection="array" item="id" separator=",">
+                #{id}
+            </foreach>
         )
     </delete>
 
