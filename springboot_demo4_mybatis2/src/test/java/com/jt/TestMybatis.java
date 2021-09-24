@@ -104,4 +104,15 @@ public class TestMybatis {
         demoUserMapper.deleteMap(map);
         System.out.println("删除操作成功!!!");
     }
+
+    /**
+     * 作业:
+     *  1.整理bug集,收集Mybatis中常见报错,并且持续维护 20%
+     *  2.mybatis案例练习
+     *    2.1 查询age<100岁的女性用户.
+     *    2.2 查询name中包含"精"的数据.并且按照年龄降序排列
+     *    2.3 查询age位于100-300的数据
+     *    2.4 将name为小乔/大乔/王昭君的年龄改为18岁,性别女
+     *
+     */
 }
