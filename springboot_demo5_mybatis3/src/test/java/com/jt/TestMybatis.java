@@ -81,7 +81,6 @@ public class TestMybatis {
         List<DemoUser> list = demoUserMapper.selectChoose(user);
         System.out.println(list);
         sqlSession.close();
-
     }
 
 }
