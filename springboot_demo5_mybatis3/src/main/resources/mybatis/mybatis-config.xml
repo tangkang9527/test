@@ -5,6 +5,12 @@
 <!--核心配置文件-->
 <configuration>
 
+    <!-- 配置别名 -->
+    <typeAliases>
+        <typeAlias type="com.jt.pojo.DemoUser" alias="DemoUser"></typeAlias>
+    </typeAliases>
+
+
     <!--环境配置标签 default 默认加载的环境 只能写一个   -->
     <environments default="development">
 
