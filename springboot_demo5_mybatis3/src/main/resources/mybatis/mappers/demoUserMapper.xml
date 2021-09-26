@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xml映射文件 必须与接口一对一绑定
+    namespace: 指定需要绑定的接口名称. 不能重复.
+ -->
+<mapper namespace="com.jt.mapper.DemoUserMapper">
+
+    <select id="findAll" resultType="com.jt.pojo.DemoUser">
+        select id,name,age,sex from demo_user
+    </select>
+</mapper>
