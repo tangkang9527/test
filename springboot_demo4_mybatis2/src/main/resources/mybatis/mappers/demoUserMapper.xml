@@ -68,4 +68,15 @@
         </foreach>
         )
     </delete>
+
+    <!--关于模糊查询的说明: 使用%号需要使用""号包裹.
+        注意事项: mybatis中的sql 最好小写. 因为不同的系统对于大小写 不敏感.
+        键位:  eclipse    ctrl + shift + y  小写
+                         ctrl + shift + u  大写/小写
+      -->
+    <select id="findLike" resultType="com.jt.pojo.DemoUser">
+        <!--select * from demo_user where name like "%"#{name}"%" order by age desc -->
+        select * from demo_user where name like #{name} order by age desc
+    </select>
+
 </mapper>

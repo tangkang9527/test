@@ -115,4 +115,36 @@ public class TestMybatis {
      *    2.4 将name为小乔/大乔/王昭君的年龄改为18岁,性别女
      *
      */
+
+    /*
+        Mybatis作业:
+            需求: 查询name中包含"精"的数据.并且按照年龄降序排列
+     */
+    @Test
+    public void findLike(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        //String name = "精";
+        String name = "%精%";
+        List<DemoUser> list = demoUserMapper.findLike(name);
+        System.out.println(list);
+        sqlSession.close();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

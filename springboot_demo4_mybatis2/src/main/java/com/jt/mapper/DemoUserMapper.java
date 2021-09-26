@@ -26,4 +26,6 @@ public interface DemoUserMapper {
     void deleteList(List list);
 
     void deleteMap(HashMap map);
+
+    List<DemoUser> findLike(String name);
 }
