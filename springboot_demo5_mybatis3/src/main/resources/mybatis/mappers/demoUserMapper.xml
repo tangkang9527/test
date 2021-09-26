@@ -21,4 +21,20 @@
     <select id="findAll" resultType="DemoUser">
         <include refid="demo_user_sql"/>
     </select>
+
+    <!--动态Sql案例
+        思路: 如果数据不为null,mybatis才会当做条件
+        if标签说明:
+            test: 判断的条件 直接写属性即可
+        where标签: 去除条件中多余的 and 或者 or的
+        说明: if和 where 几乎一起出现.
+    -->
+    <select id="findWhere" resultType="DemoUser">
+        select id,name,age,sex from demo_user
+            <where>
+                <if test="name != null">name = #{name}</if>
+                <if test="age !=null"> and age=#{age}</if>
+                <if test="sex !=null"> and sex=#{sex}</if>
+            </where>
+    </select>
 </mapper>

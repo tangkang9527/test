@@ -40,4 +40,20 @@ public class TestMybatis {
         System.out.println(list);
         sqlSession.close();
     }
+
+    /*
+    *   封装DemoUser的对象,根据对象中不为null的属性查询
+    * */
+    @Test
+    public void testFindWhere(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        DemoUser demoUser = new DemoUser();
+        demoUser.setAge(3000);
+        List<DemoUser> list = demoUserMapper.findWhere(demoUser);
+        System.out.println(list);
+        sqlSession.close();
+    }
+
+
 }
