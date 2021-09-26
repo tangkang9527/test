@@ -15,4 +15,6 @@ public interface DemoUserMapper {
     List<DemoUser> findWhere(DemoUser demoUser);
 
     void updateUser(DemoUser user);
+
+    List<DemoUser> selectChoose(DemoUser user);
 }

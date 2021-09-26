@@ -53,4 +53,20 @@
                 id = #{id}
     </update>
 
+    <!--
+        需求: 如果不想将全部的条件当做if的判断.则mybatis提供了分支结构 switch
+        语法说明:
+              choose:代表分支结构,只有一个条件有效.
+              when: 指定判断的条件 和if类似.
+              otherwise: 如果上述的条件都满足时,该行代码有效.
+    -->
+    <select id="selectChoose" resultType="DemoUser">
+        select * from demo_user
+        where
+            <choose>
+                <when test="name !=null">name = #{name}</when>
+                <otherwise>sex = #{sex}</otherwise>
+            </choose>
+    </select>
+
 </mapper>

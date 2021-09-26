@@ -69,4 +69,19 @@ public class TestMybatis {
 
     }
 
+    /**
+     * 需求: 如果存在name则按照name查询,否则按照sex查询.
+     */
+    @Test
+    public void testSelectChoose(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        DemoUser user = new DemoUser();
+        user.setSex("男");
+        List<DemoUser> list = demoUserMapper.selectChoose(user);
+        System.out.println(list);
+        sqlSession.close();
+
+    }
+
 }
