@@ -17,7 +17,7 @@
         select id,name,age,sex from demo_user
     </sql>
 
-    <!--include 代表包含Sql标签 -->
+    <!--include 代表包含Sql标签  refid="引用Sql标签ID"-->
     <select id="findAll" resultType="DemoUser">
         <include refid="demo_user_sql"/>
     </select>
