@@ -79,4 +79,15 @@
         select * from demo_user where name like #{name} order by age desc
     </select>
 
+    <!--批量更新操作-->
+    <update id="updateUser">
+        update demo_user set age = #{age},sex = #{sex}
+        where name in (
+            <foreach collection="names" item="name" separator=",">
+                #{name}
+            </foreach>
+        )
+    </update>
+
+
 </mapper>

@@ -131,7 +131,21 @@ public class TestMybatis {
         sqlSession.close();
     }
 
-
+    /**
+     * 作业2: 将name为小乔/大乔/王昭君的年龄改为18岁,性别女
+     */
+    @Test
+    public void updateUser(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        Map<String,Object> map = new HashMap<>();
+        String[] array = {"小乔","大乔","王昭君"};
+        map.put("names",array);
+        map.put("age",18);
+        map.put("sex","女");
+        demoUserMapper.updateUser(map);
+        sqlSession.close();
+    }
 
 
 

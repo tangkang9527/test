@@ -28,4 +28,6 @@ public interface DemoUserMapper {
     void deleteMap(HashMap map);
 
     List<DemoUser> findLike(String name);
+
+    void updateUser(Map<String, Object> map);
 }
