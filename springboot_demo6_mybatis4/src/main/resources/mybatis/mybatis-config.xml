@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+
+    <!-- 配置别名 -->
+    <typeAliases>
+        <!--别名标签只对某个类有效.-->
+        <!--<typeAlias type="com.jt.pojo.DemoUser" alias="DemoUser"></typeAlias>-->
+
+        <!--package 指定的是包路径的信息.-->
+        <package name="com.jt.pojo"/>
+    </typeAliases>
+
+    <!--环境配置标签 default 默认加载的环境 只能写一个   -->
+    <environments default="development">
+
+        <!--编辑开发环境  id是环境唯一标识符  -->
+        <environment id="development">
+            <!--事物管理器  利用jdbc控制事务 -->
+            <transactionManager type="JDBC"/>
+            <!--mybatis采用数据库链接池的方式整合数据源 -->
+            <dataSource type="POOLED">
+                <!--高版本数据库驱动 需要添加cj 数据库版本最好5.5以上 不然需要降低驱动版本号 -->
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/jt?serverTimezone=GMT%2B8&amp;useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;allowMultiQueries=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+
+    <!--Mybatis加载Mapper映射文件
+        1.mapper映射文件是有顺序的 位置不要随便切换
+        2.通过resource 加载指定的xml映射文件
+    -->
+    <mappers>
+        <mapper resource="mybatis/mappers/demoUserMapper.xml"/>
+        <mapper resource="mybatis/mappers/DeptMapper.xml"/>
+    </mappers>
+
+</configuration>

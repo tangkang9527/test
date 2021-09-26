@@ -68,5 +68,4 @@
                 <otherwise>sex = #{sex}</otherwise>
             </choose>
     </select>
-
 </mapper>
