@@ -7,9 +7,12 @@
 
     <!-- 配置别名 -->
     <typeAliases>
-        <typeAlias type="com.jt.pojo.DemoUser" alias="DemoUser"></typeAlias>
-    </typeAliases>
+        <!--别名标签只对某个类有效.-->
+        <!--<typeAlias type="com.jt.pojo.DemoUser" alias="DemoUser"></typeAlias>-->
 
+        <!--package 指定的是包路径的信息.-->
+        <package name="com.jt.pojo"/>
+    </typeAliases>
 
     <!--环境配置标签 default 默认加载的环境 只能写一个   -->
     <environments default="development">
@@ -37,4 +40,5 @@
     <mappers>
         <mapper resource="mybatis/mappers/demoUserMapper.xml"/>
     </mappers>
+
 </configuration>

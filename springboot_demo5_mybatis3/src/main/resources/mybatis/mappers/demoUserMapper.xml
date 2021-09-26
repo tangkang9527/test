@@ -7,6 +7,10 @@
  -->
 <mapper namespace="com.jt.mapper.DemoUserMapper">
 
+    <!--映射原理:
+        如果配置文件中定义了包路径,则映射对象时会自动的完成路径的拼接
+        resultType="com.jt.pojo.DemoUser"
+    -->
     <select id="findAll" resultType="DemoUser">
         select id,name,age,sex from demo_user
     </select>
