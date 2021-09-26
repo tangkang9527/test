@@ -2,8 +2,10 @@ package com.jt;
 
 import com.jt.mapper.DemoUserMapper;
 import com.jt.mapper.DeptMapper;
+import com.jt.mapper.EmpMapper;
 import com.jt.pojo.DemoUser;
 import com.jt.pojo.Dept;
+import com.jt.pojo.Emp;
 import org.apache.catalina.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -51,5 +53,27 @@ public class TestMybatis {
         System.out.println(list);
         sqlSession.close();
     }
+
+    /**
+     * 完成一对一映射.
+     * 规定:  一个员工对应一个部门.
+     * 选取方向: 员工方
+     */
+    @Test
+    public void testOneToOne(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        List<Emp> list = empMapper.findAll();
+        System.out.println(list);
+        sqlSession.close();
+    }
+
+
+
+
+
+
+
+
 
 }

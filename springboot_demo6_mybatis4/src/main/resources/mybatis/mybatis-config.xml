@@ -40,6 +40,7 @@
     <mappers>
         <mapper resource="mybatis/mappers/demoUserMapper.xml"/>
         <mapper resource="mybatis/mappers/DeptMapper.xml"/>
+        <mapper resource="mybatis/mappers/EmpMapper.xml"/>
     </mappers>
 
 </configuration>
