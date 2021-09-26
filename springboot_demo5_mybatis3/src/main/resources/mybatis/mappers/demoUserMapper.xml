@@ -37,4 +37,20 @@
                 <if test="sex !=null"> and sex=#{sex}</if>
             </where>
     </select>
+
+    <!--
+        规则: 根据对象中不为null的属性当做set条件
+        set标签说明: 去除set条件中多余的 ,号
+    -->
+    <update id="updateUser">
+        update demo_user
+            <set>
+                <if test="name !=null">name = #{name},</if>
+                <if test="age !=null">age = #{age},</if>
+                <if test="sex !=null">sex = #{sex}</if>
+            </set>
+            where
+                id = #{id}
+    </update>
+
 </mapper>

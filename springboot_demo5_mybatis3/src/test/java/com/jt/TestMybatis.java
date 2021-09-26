@@ -55,5 +55,18 @@ public class TestMybatis {
         sqlSession.close();
     }
 
+    /**
+     * 需求: 根据Id,动态的实现数据的更新.
+     */
+    @Test
+    public void testUpdateSet(){
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        DemoUser user = new DemoUser();
+        user.setId(1).setName("守山大使");
+        demoUserMapper.updateUser(user);
+        sqlSession.close();
+
+    }
 
 }

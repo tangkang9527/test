@@ -13,4 +13,6 @@ public interface DemoUserMapper {
     List<DemoUser> findAll();
 
     List<DemoUser> findWhere(DemoUser demoUser);
+
+    void updateUser(DemoUser user);
 }
