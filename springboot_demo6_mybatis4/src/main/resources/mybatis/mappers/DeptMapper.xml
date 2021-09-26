@@ -4,5 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jt.mapper.DeptMapper">
 
+    <!--
+        ORM思想: 对象关系映射.
+        属性: deptId,deptName
+        字段: dept_id,dept_name
+        resultType说明:
+             当结果集中的字段名称,如果与属性的名称一致时,
+             才会实现自动的数据封装.
+        resultMap="" 自定义的封装数据的结构
+    -->
+    <select id="findAll" resultMap="deptRM">
+        select * from dept
+    </select>
+    <!--自定义映射关系的
+        语法:
+            1.id标签代表主键 (每张表中都会有一个主键)
+                1.1.column: 代表结果集中的字段.
+                1.2.property: 对象中的属性
+            2.result 除了主键之外的配置信息
+    -->
+    <resultMap id="deptRM" type="Dept">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+    </resultMap>
 
 </mapper>

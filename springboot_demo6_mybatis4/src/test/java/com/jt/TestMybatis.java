@@ -1,7 +1,9 @@
 package com.jt;
 
 import com.jt.mapper.DemoUserMapper;
+import com.jt.mapper.DeptMapper;
 import com.jt.pojo.DemoUser;
+import com.jt.pojo.Dept;
 import org.apache.catalina.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -41,5 +43,13 @@ public class TestMybatis {
         sqlSession.close();
     }
 
+    @Test
+    public void testFindDept(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
+        List<Dept> list = deptMapper.findAll();
+        System.out.println(list);
+        sqlSession.close();
+    }
 
 }
