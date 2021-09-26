@@ -11,7 +11,14 @@
         如果配置文件中定义了包路径,则映射对象时会自动的完成路径的拼接
         resultType="com.jt.pojo.DemoUser"
     -->
-    <select id="findAll" resultType="DemoUser">
+
+    <!--2.简化Sql标签 -->
+    <sql id="demo_user_sql">
         select id,name,age,sex from demo_user
+    </sql>
+
+    <!--include 代表包含Sql标签 -->
+    <select id="findAll" resultType="DemoUser">
+        <include refid="demo_user_sql"/>
     </select>
 </mapper>
