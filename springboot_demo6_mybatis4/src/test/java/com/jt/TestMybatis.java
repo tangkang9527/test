@@ -58,6 +58,7 @@ public class TestMybatis {
      * 完成一对一映射.
      * 规定:  一个员工对应一个部门.
      * 选取方向: 员工方
+     * 需求: 需要在员工中 完成部门对象的封装.
      */
     @Test
     public void testOneToOne(){
