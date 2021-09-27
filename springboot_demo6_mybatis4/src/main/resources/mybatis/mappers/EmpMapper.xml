@@ -28,4 +28,28 @@
             <result column="dept_name" property="deptName"/>
         </association>
     </resultMap>
+
+    <!--where条件的子查询-->
+    <select id="findAllWhere" resultMap="empRM2">
+        select * from emp
+    </select>
+    <!--
+        子查询的说明:
+            1.column="子查询的字段信息"
+            2.select= "sql的ID" 作用:根据column中的数据 实现子查询!!!
+    -->
+    <resultMap id="empRM2" type="Emp" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="dept" javaType="Dept"
+                     column="dept_id" select="findDept"/>
+    </resultMap>
+    <select id="findDept" resultMap="deptRM">
+        select * from dept where dept_id = #{dept_id}
+    </select>
+
+    <resultMap id="deptRM" type="Dept">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+    </resultMap>
+    
 </mapper>

@@ -69,8 +69,15 @@ public class TestMybatis {
         sqlSession.close();
     }
 
-
-
+    /*一对一查询 方式2 where 条件子查询 */
+    @Test
+    public void testOneToOne2(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        EmpMapper empMapper = sqlSession.getMapper(EmpMapper.class);
+        List<Emp> list = empMapper.findAllWhere();
+        System.out.println(list);
+        sqlSession.close();
+    }
 
 
 

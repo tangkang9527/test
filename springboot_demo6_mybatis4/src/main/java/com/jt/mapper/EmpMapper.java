@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface EmpMapper {
     List<Emp> findAll();
+
+    List<Emp> findAllWhere();
 }
