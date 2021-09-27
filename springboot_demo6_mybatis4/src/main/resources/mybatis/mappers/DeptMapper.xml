@@ -16,6 +16,7 @@
     <select id="findAll" resultMap="deptRM">
         select * from dept
     </select>
+
     <!--自定义映射关系的
         语法:
             1.id标签代表主键 (每张表中都会有一个主键)
