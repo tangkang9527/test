@@ -40,13 +40,16 @@
 
     <!--
         关于一对多 数据封装说明:
-            collection: 封装集合的固定写法.
+            1.collection: 封装集合的固定写法.
                 property:   指定属性
                 ofType:     封装List集合的泛型对象
+            2.如果开启驼峰映射规则,可以简化赋值过程
+            3.autoMapping="true" 自动实现映射
+            4.一般最好保留主键,为后续扩展提供方便.
     -->
-    <resultMap id="listRM" type="Dept">
+    <resultMap id="listRM" type="Dept" autoMapping="true">
         <id column="dept_id" property="deptId"/>
-        <result column="dept_name" property="deptName"/>
+        <!--<result column="dept_name" property="deptName"/>-->
         <collection property="emps" ofType="Emp" autoMapping="true">
             <id column="id" property="id"/>
         </collection>

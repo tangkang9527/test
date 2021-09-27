@@ -5,6 +5,12 @@
 <!--核心配置文件-->
 <configuration>
 
+    <!--Mybatis的核心配置-->
+    <settings>
+        <!--开启了驼峰映射规则 dept_id 自动映射到 deptId -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <!-- 配置别名 -->
     <typeAliases>
         <!--别名标签只对某个类有效.-->
