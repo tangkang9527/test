@@ -46,7 +46,6 @@
     <select id="findDept" resultMap="deptRM">
         select * from dept where dept_id = #{dept_id}
     </select>
-
     <resultMap id="deptRM" type="Dept">
         <id column="dept_id" property="deptId"/>
         <result column="dept_name" property="deptName"/>
