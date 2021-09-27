@@ -29,4 +29,28 @@
         <result column="dept_name" property="deptName"/>
     </resultMap>
 
+    <select id="findDept" resultMap="listRM">
+        SELECT d.dept_id,d.dept_name,e.id,e.name,e.age FROM
+            dept d
+                LEFT JOIN
+            emp e
+            ON
+                d.dept_id = e.dept_id
+    </select>
+
+    <!--
+        关于一对多 数据封装说明:
+            collection: 封装集合的固定写法.
+                property:   指定属性
+                ofType:     封装List集合的泛型对象
+    -->
+    <resultMap id="listRM" type="Dept">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_name" property="deptName"/>
+        <collection property="emps" ofType="Emp" autoMapping="true">
+            <id column="id" property="id"/>
+        </collection>
+    </resultMap>
+
+    
 </mapper>

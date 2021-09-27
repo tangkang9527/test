@@ -7,4 +7,6 @@ import java.util.List;
 public interface DeptMapper {
 
     List<Dept> findAll();
+
+    List<Dept> findDept();
 }

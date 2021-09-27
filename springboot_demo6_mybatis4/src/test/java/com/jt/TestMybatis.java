@@ -79,7 +79,17 @@ public class TestMybatis {
         sqlSession.close();
     }
 
-
+    /**
+     * 一对多的测试  一个部门下有多个用户信息
+     */
+    @Test
+    public void testOneToMore(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
+        List<Dept> list = deptMapper.findDept();
+        System.out.println(list);
+        sqlSession.close();
+    }
 
 
 

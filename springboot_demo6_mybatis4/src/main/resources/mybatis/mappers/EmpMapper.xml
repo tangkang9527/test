@@ -50,5 +50,7 @@
         <id column="dept_id" property="deptId"/>
         <result column="dept_name" property="deptName"/>
     </resultMap>
-    
+
+
+
 </mapper>
