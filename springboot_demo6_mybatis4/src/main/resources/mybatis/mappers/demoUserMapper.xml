@@ -7,6 +7,9 @@
  -->
 <mapper namespace="com.jt.mapper.DemoUserMapper">
 
+    <!--应用二级缓存-->
+    <cache/>
+
     <!--2.简化Sql标签 -->
     <sql id="demo_user_sql">
         select id,name,age,sex from demo_user

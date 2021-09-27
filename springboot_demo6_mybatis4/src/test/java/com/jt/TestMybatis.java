@@ -91,7 +91,39 @@ public class TestMybatis {
         sqlSession.close();
     }
 
+    /**
+     * Mybatis一级缓存: 默认开启
+     *      规则: 同一个SqlSession内部有效.
+     */
+    @Test
+    public void cache1(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        List<DemoUser> list1 = demoUserMapper.findAll();
+        List<DemoUser> list2 = demoUserMapper.findAll();
+        List<DemoUser> list3 = demoUserMapper.findAll();
+        System.out.println(list1 == list2);
+        sqlSession.close();
+    }
 
+    /**
+     * 二级缓存说明:
+     *     sqlSession查询数据之后,会将缓存信息保存到一级缓存中.但是不会立即将
+     *     缓存交给二级缓存保管.如果需要使用二级缓存,则必须将sqlSession业务逻辑执行成功
+     *     之后,并且关闭.
+     */
+    @Test
+    public void cache2(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DemoUserMapper demoUserMapper = sqlSession.getMapper(DemoUserMapper.class);
+        demoUserMapper.findAll();
+        //关闭一级缓存
+        sqlSession.close();
 
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        DemoUserMapper demoUserMapper2 = sqlSession2.getMapper(DemoUserMapper.class);
+        demoUserMapper2.findAll();
+        sqlSession2.close();
+    }
 
 }
