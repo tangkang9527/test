@@ -55,4 +55,27 @@
         </collection>
     </resultMap>
 
+    <!--
+        知识点:
+            1. 形参/实参  参数传递的是值,和名称无关.
+            2. resultMap的简化  当开启驼峰映射规则时,可以自动映射,则使用
+               resultType即可.
+            3. 如果mybatis传递的参数只有一个,则mybatis是利用下标取值.
+                所以名称任意
+               但是一般需要注意开发规范
+    -->
+    <select id="findDeptById" resultType="Dept">
+        select * from dept where dept_id = #{id}
+    </select>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 </mapper>

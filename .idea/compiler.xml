@@ -12,6 +12,7 @@
         <module name="springboot_demo1" />
         <module name="springboot_demo3_mybatis" />
         <module name="springboot_demo4_mybatis2" />
+        <module name="springboot_ssm" />
         <module name="springboot_pom" />
         <module name="springboot_demo5_mybatis3" />
       </profile>
@@ -24,6 +25,7 @@
       <module name="springboot_demo5_mybatis3" target="1.8" />
       <module name="springboot_demo6_mybatis4" target="1.8" />
       <module name="springboot_pom" target="1.8" />
+      <module name="springboot_ssm" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

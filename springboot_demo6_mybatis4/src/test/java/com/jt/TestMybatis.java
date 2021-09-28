@@ -127,4 +127,23 @@ public class TestMybatis {
         sqlSession2.close();
     }
 
+    /**
+     * 案例说明:  根据id查询部门信息
+     * 关于对象创建说明:
+     *      1.DeptMapper是一个接口. 接口不能直接实例化对象!!!
+     *      2.获取的DeptMapper是JDK在内部动态为接口生成的代理对象.
+     *      3.调用代理对象功能上与接口一致.
+     */
+    @Test
+    public void testFindDeptById(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
+        System.out.println(deptMapper.getClass());
+        int id = 100;
+        Dept dept = deptMapper.findDeptById(id);
+        System.out.println(dept);
+        sqlSession.close();
+    }
+
+
 }
