@@ -9,4 +9,5 @@ public interface UserService {
     //查询user表中的所有的数据
     List<User> findAll();
 
+    User findUserById(Integer id);
 }

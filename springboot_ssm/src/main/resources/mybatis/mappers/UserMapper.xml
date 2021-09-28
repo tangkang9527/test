@@ -7,4 +7,8 @@
     <select id="findAll" resultType="com.jt.pojo.User">
         select * from demo_user
     </select>
+
+    <select id="findUserById" resultType="User">
+        select * from demo_user where id = #{id}
+    </select>
 </mapper>
