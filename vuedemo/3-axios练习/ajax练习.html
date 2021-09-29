@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>Ajax请求的测试</h1>
+		
+		<!-- 1.引入JS -->
+		<script src="../js/axios.js"></script>
+		<!-- 2.axios入门 -->
+		<script>
+			
+			/**
+			 * 需求:获取后台服务器的业务数据
+			 * URL: http://localhost:8090/getUser
+			 * 参数说明:
+			 * 		url: ajax的请求的地址.
+			 * 		参数: ajax请求的参数.
+			 */
+			let url = "http://localhost:8090/getUser"
+			axios.get(url)
+				 .then(function(promise){
+					 console.log(promise.data)
+				 })
+		</script>
+	</body>
+</html>
