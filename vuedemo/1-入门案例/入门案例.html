@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>VUE入门案例</title>
+	</head>
+	<body>
+		<h1>vue入门案例</h1>
+		<div id="app">
+			<h3>获取数据: {{msg}}</h3>
+		</div>
+		
+		<!-- 使用步骤:
+			 1.导入js.文件
+			 2.准备根标签
+			 3.创建vue对象,并且实现挂载.
+			 4.定义属性.实现数据动态取值
+			 知识补充: new Vue({}) 函数式编程
+		 -->
+		 <script src="../js/vue.js"></script>
+		 <script>
+			//1.创建VUE对象
+			new Vue({
+				//
+				el: "#app",
+				data: {
+					msg: "您好VUE JS"
+				}
+			})
+		 </script>
+	</body>
+</html>

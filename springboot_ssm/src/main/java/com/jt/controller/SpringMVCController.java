@@ -18,10 +18,4 @@ public class SpringMVCController {
         return "参数名称:"+user;
     }
 
-
-
-
-
-
-
 }
