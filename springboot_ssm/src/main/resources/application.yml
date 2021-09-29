@@ -23,4 +23,22 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#Sql日志文件打印
+logging:
+  level:
+    com.jt.mapper: debug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

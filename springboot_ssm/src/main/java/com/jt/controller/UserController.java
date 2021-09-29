@@ -2,6 +2,7 @@ package com.jt.controller;
 
 import com.jt.pojo.User;
 import com.jt.service.UserService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -85,5 +86,48 @@ public class UserController {
         Integer ageInt = Integer.parseInt(age);
         return "获取数据:"+age;
     }*/
+
+
+    /**
+     * 作业:
+     *  5. 更新操作 利用restFul的结构, 根据Id修改数据,修改name/age
+     *     URL:http://localhost:8090/user/貂蝉/18/227  PUT
+     *     查询: http://localhost:8090/user/18         GET
+     *     解析: URL:http://localhost:8090/user/{name}/{age}/{id}
+     *
+     *  RestFul语法:
+     *      1.用户url编辑
+     *          1.1 参数与参数之间使用/分割.
+     *          1.2 restFul结构顺序一旦确定,不能随意更改
+     *          1.3 如果使用restFul结构,请求路径中不能出现动词.隐藏目的.
+     *
+     *      2.用户规范:
+     *          由于restFul结构请求路径都是名词,所以不能区分业务逻辑.
+     *          所以采用请求类型,严格区分业务需求.
+     *          2.1  GET   查询操作
+     *          2.2  POST  新增操作/form表单提交
+     *          2.3  PUT   修改操作
+     *          2.4  DELETE 删除操作
+     *
+     *      3.参数接收
+     *          1.参数与参数之间使用/分割.
+     *          2.参数必须使用{xxx}包裹
+     *          3.使用特定的注解@PathVariable("name") String name 接收参数
+     *          4.如果接收参数的名称与对象中的属性名称一致,则可以使用对象接收
+     *
+     */
+    @GetMapping("/user/{name}/{age}/{id}")
+    public Object restFul(User user){
+
+        userService.update(user);
+        return "数据更新成功!!!";
+    }
+
+
+
+
+
+
+
 
 }

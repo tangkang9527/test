@@ -10,4 +10,6 @@ public interface UserService {
     List<User> findAll();
 
     User findUserById(Integer id);
+
+    void update(User user);
 }
