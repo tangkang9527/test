@@ -14,4 +14,12 @@ public interface UserService {
     void update(User user);
 
     List<User> findUserByAS(User user);
+
+    List<User> findUserBYNA(User user);
+
+    List<User> findUserByLike(String name);
+
+    List<User> findUserByIds(Integer[] id);
+
+    List<User> findUser(User user);
 }

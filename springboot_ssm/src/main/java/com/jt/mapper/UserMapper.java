@@ -20,4 +20,13 @@ public interface UserMapper {
     void update(User user);
     @Select("select * from demo_user where age=#{age} and sex=#{sex}")
     List<User> findUserByAS(User user);
+
+    List<User> findUserByNA(User user);
+
+    List<User> findUserByLike(String name);
+
+    //为了操作方便将形参改名为ids
+    List<User> findUserByIds(Integer[] ids);
+
+    List<User> findUser(User user);
 }

@@ -38,4 +38,28 @@ public class UserServiceImpl implements UserService{
 
         return userMapper.findUserByAS(user);
     }
+
+    @Override
+    public List<User> findUserBYNA(User user) {
+
+        return userMapper.findUserByNA(user);
+    }
+
+    @Override
+    public List<User> findUserByLike(String name) {
+
+        return userMapper.findUserByLike(name);
+    }
+
+    @Override
+    public List<User> findUserByIds(Integer[] id) {
+
+        return userMapper.findUserByIds(id);
+    }
+
+    @Override
+    public List<User> findUser(User user) {
+
+        return userMapper.findUser(user);
+    }
 }

@@ -47,7 +47,7 @@ public class UserController {
     }
 
     //http://localhost:8090/findUserByIds?id=1,3,5,6,7
-    @GetMapping("/findUserByIds")
+    /*@GetMapping("/findUserByIds")
     public String findUserByIds(HttpServletRequest request){
         String id = request.getParameter("id");
         //拆分数组
@@ -59,7 +59,7 @@ public class UserController {
         }
         System.out.println(intArray);
         return "参数接收成功!!!";
-    }
+    }*/
 
     /**
      * Servlet参数传递核心规则
@@ -74,11 +74,11 @@ public class UserController {
      *   在内部封装了Servlet机制.并且可以根据用户的参数类型,实现自动的数据
      *   类型的转化
      */
-    @GetMapping("/findServlet")
+   /* @GetMapping("/findServlet")
     public String findServlet(Integer age){
 
         return "获取数据:"+age;
-    }
+    }*/
 
     /*@GetMapping("/findServlet")
     public String findServlet(HttpServletRequest request){
@@ -124,10 +124,53 @@ public class UserController {
     }
 
 
+    /**
+     * 需求: 根据name和age查询数据
+     * URL: URL: http://localhost:8090/findUserByNA?name=xxx&age=xxx
+     * 参数: name/age
+     * 返回值: List<User>
+     */
+    @GetMapping("/findUserByNA")
+    public List<User> findUserByNA(User user){
 
+        return userService.findUserBYNA(user);
+    }
 
+    /**
+     * 需求:查询以xx结尾的数据
+     * URL: http://localhost:8090/findUserLike?name=xx
+     * 参数: name=xx
+     * 返回值: List<User></>
+     */
+    @GetMapping("/findUserLike")
+    public List<User> findUserLike(String name){
 
+        return userService.findUserByLike(name);
+    }
 
+    /**
+     * 作业3: 根据ID批量查询
+     * URL: http://localhost:8090/findUserByIds?id=1,3,5,6,7
+     * 参数: id=1,3,5,6,7
+     * 返回值: List<User>
+     * 功能: 如果多个参数使用,号分割,则默认可以使用数组接收
+     */
+    @GetMapping("/findUserByIds")
+    public List<User> findUserIds(Integer[] id){
 
+        return userService.findUserByIds(id);
+    }
+
+    /**
+     * 作业4: 动态Sql
+     * URL: http://localhost:8090/findUser?id=xx&name="xx"&age=xx&sex=xx
+     * 参数: id/age/name/sex 可能有
+     * 结果: List<User>
+     */
+    @GetMapping("/findUser")
+    public List<User> findUser(User user){
+
+        return userService.findUser(user);
+    }
 
 }

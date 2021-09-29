@@ -12,5 +12,32 @@
         select * from demo_user where id = #{id}
     </select>
 
+    <select id="findUserByNA" resultType="User">
+        select * from demo_user where name=#{name} and age=#{age}
+    </select>
+    
+    <!--模糊查询 查询名称以"xxx"结尾的数据.-->
+    <select id="findUserByLike" resultType="User">
+        select * from demo_user where name like "%"#{name}
+    </select>
 
+    <!--批量查询  -->
+    <select id="findUserByIds" resultType="User">
+        select * from demo_user where id in (
+            <foreach collection="array" item="id" separator=",">
+                #{id}
+            </foreach>
+        )
+    </select>
+
+    <!--动态Sql 有时参数可能为null-->
+    <select id="findUser" resultType="User">
+        select * from demo_user
+            <where>
+                <if test="id !=null">id = #{id}</if>
+                <if test="name !=null">and name = #{name}</if>
+                <if test="age !=null">and age = #{age}</if>
+                <if test="sex !=null">and sex = #{sex}</if>
+            </where>
+    </select>
 </mapper>
