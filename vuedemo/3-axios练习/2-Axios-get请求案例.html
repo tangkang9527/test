@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Get请求练习</title>
+	</head>
+	<body>
+		
+		<h1>Ajax项目前测试</h1>
+		<!-- 导入js jar包 -->
+		<script src="../js/axios.js"></script>
+		<script>
+			
+			/**
+			 * 总结: 前端Get请求参数传递的方式3种
+			 * 	方式1: 通过?属性=属性值的方法拼接.
+			 * 	方式2: 通过对象的方式实现数据传递.
+			 * 	方式3: 利用restFul的结构实现参数传递.
+			 * 
+			 * 作业1:  根据ID查询用户信息
+			 * 作业2:  根据age/sex查询用户信息
+			 */
+			
+			/**
+			 *  作业1 
+			 * 	url地址: http://localhost:8090/axios/findUserById
+			 *  参数:    id=1
+			 *  返回值:  console.log输出  
+			 */
+			
+			let url1 = "http://localhost:8090/axios/findUserById?id=1"
+			axios.get(url1)
+			     .then(function(promise){
+					 console.log(promise.data)
+				 })
+			
+			/**
+			 *  作业2:  根据age/sex查询用户信息
+			 * 	url地址: http://localhost:8090/axios/findUserByAS
+			 *  参数:    id=1
+			 *  返回值:  console.log输出  
+			 *  知识点:  根据对象传递参数时,使用params关键字
+			 */
+			let url2 = "http://localhost:8090/axios/findUserByAS"
+			//封装对象
+			let user = {
+				age: 18,
+				sex: "女"
+			}
+			axios.get(url2,{params : user})
+				 .then(function(promise){
+					 console.log(promise.data)
+				 })
+		</script>
+	</body>
+</html>
