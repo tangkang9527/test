@@ -8,6 +8,8 @@
 		<h1>vue入门案例</h1>
 		<div id="app">
 			<h3>获取数据: {{msg}}</h3>
+			<h3>获取数字: {{number}}</h3>
+			<button @click="addNum">增加</button>
 		</div>
 		
 		<!-- 使用步骤:
@@ -16,15 +18,27 @@
 			 3.创建vue对象,并且实现挂载.
 			 4.定义属性.实现数据动态取值
 			 知识补充: new Vue({}) 函数式编程
+			 
+			 关于变量说明:
+				1. js中变量定义 早期 var 全局变量 没有作用域.
+				2. let有作用域的概念
+				3. const 常量定义  不允许修改
+				
 		 -->
 		 <script src="../js/vue.js"></script>
 		 <script>
 			//1.创建VUE对象
-			new Vue({
+			const app = new Vue({
 				//
 				el: "#app",
 				data: {
-					msg: "您好VUE JS"
+					msg: "您好VUE JS",
+					number: 100
+				},
+				methods: {
+					addNum(){
+						this.number ++
+					}
 				}
 			})
 		 </script>
