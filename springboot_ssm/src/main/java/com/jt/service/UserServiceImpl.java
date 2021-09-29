@@ -32,4 +32,10 @@ public class UserServiceImpl implements UserService{
 
         userMapper.update(user);
     }
+
+    @Override
+    public List<User> findUserByAS(User user) {
+
+        return userMapper.findUserByAS(user);
+    }
 }

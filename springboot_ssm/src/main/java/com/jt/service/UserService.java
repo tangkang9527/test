@@ -12,4 +12,6 @@ public interface UserService {
     User findUserById(Integer id);
 
     void update(User user);
+
+    List<User> findUserByAS(User user);
 }

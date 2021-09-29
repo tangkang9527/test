@@ -18,4 +18,6 @@ public interface UserMapper {
     @Update("update demo_user set name=#{name}, age=#{age} where id=#{id}")
     //@Delete("xxxxx")
     void update(User user);
+    @Select("select * from demo_user where age=#{age} and sex=#{sex}")
+    List<User> findUserByAS(User user);
 }
