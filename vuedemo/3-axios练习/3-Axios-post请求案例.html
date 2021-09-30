@@ -16,13 +16,17 @@
 			 * 		1.post请求中的参数 axios.post(url,user)
 			 * 
 			 */
-			let url = "http://localhost:8090/axios/saveUser"
+			//let url = "http://localhost:8090/axios/saveUser"
 			let user = {
 				name: "国庆快乐",
 				age: 72,
 				sex: "女"
 			}
-			axios.post(url,user)
+			
+			/* 指定公共的请求前缀 */
+			axios.defaults.baseURL = "http://localhost:8090"
+			
+			axios.post("/axios/saveUser",user)
 				 .then(function(promise){
 					 console.log(promise.data)
 				 })
