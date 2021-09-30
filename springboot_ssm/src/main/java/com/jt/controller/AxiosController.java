@@ -68,4 +68,17 @@ public class AxiosController {
         userService.saveUser(user);
         return "用户入库成功!!!";
     }
+
+
+    /**
+     * 需求:获取user全部列表
+     * URL: /axios/findAll
+     * 参数: 没有
+     * 返回值: List<User>
+     */
+    @GetMapping("/findAll")
+    public List<User> findAll(){
+
+        return userService.findAll();
+    }
 }

@@ -35,16 +35,17 @@
 					<td>性别</td>
 					<td>操作</td>
 				</tr>
-				<tr align="center">
-					<td>100</td>
-					<td>张三</td>
-					<td>19</td>
-					<td>男</td>
+				<tr align="center" v-for="user in userList">
+					<td v-text="user.id"></td>
+					<td v-text="user.name"></td>
+					<td v-text="user.age"></td>
+					<td v-text="user.sex"></td>
 					<td>
 						<button>修改</button>
 						<button>删除</button>
 					</td>
 				</tr>
+				
 			</table>
 		</div>
 		
@@ -64,7 +65,7 @@
 					//2.定义获取列表数据的函数
 					async getUserList(){
 						let {data: result} = await axios.get("/axios/findAll")
-						console.log(result)
+						//console.log(result)
 						//将ajax返回值传递给Vue
 						this.userList = result
 					}
