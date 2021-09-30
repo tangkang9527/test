@@ -12,7 +12,7 @@
 					用户名称: <input type="text" name="name"/>
 					用户年龄: <input type="text" name="age"/>
 					用户性别: <input type="text" name="sex"/>
-					<button>修改</button>
+					<button>新增</button>
 				</p>
 			</div>
 			<hr />
@@ -51,6 +51,29 @@
 		<script src="../js/axios.js"></script>
 		<script src="../js/vue.js"></script>
 		<script>
+			//为axios执行前缀
+			axios.defaults.baseURL="http://localhost:8090"
+
+			const app = new Vue({
+				el: "#app",
+				data: {
+					//3.定义数据列表
+					userList: []
+				},
+				methods: {
+					//2.定义获取列表数据的函数
+					async getUserList(){
+						let {data: result} = await axios.get("/axios/findAll")
+						console.log(result)
+						//将ajax返回值传递给Vue
+						this.userList = result
+					}
+				},
+				mounted(){
+					//1利用生命周期函数调用getUser函数
+					this.getUserList()
+				}
+			})
 			
 		</script>
 	</body>
