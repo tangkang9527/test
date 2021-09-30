@@ -9,10 +9,11 @@
 			<div align="center">
 				<h3 align="center">用户新增</h3><br>
 				<p>
-					用户名称: <input type="text" name="name"/>
-					用户年龄: <input type="text" name="age"/>
-					用户性别: <input type="text" name="sex"/>
-					<button>新增</button>
+					<!-- 看到input框架 第一时间想到双向数据绑定 -->
+					用户名称: <input type="text" name="name" v-model="addUser.name"/>
+					用户年龄: <input type="text" name="age"  v-model="addUser.age" />
+					用户性别: <input type="text" name="sex"  v-model="addUser.sex" />
+					<button @click="addUserBtn">新增</button>
 				</p>
 			</div>
 			<hr />
@@ -59,7 +60,13 @@
 				el: "#app",
 				data: {
 					//3.定义数据列表
-					userList: []
+					userList: [],
+					//指定新增对象
+					addUser: {
+						name: '',
+						age: '',
+						sex: ''
+					}
 				},
 				methods: {
 					//2.定义获取列表数据的函数
@@ -68,6 +75,16 @@
 						//console.log(result)
 						//将ajax返回值传递给Vue
 						this.userList = result
+					},
+					async addUserBtn(){
+						//将数据实现入库操作
+						let {data: result} = await axios.post("/axios/saveUser",this.addUser)
+						//用户提示
+						alert(result)
+						//清空原有数据
+						this.addUser = {}
+						//如果新增成功,应该重新获取列表信息
+						this.getUserList()
 					}
 				},
 				mounted(){
