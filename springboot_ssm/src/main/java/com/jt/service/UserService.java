@@ -22,4 +22,6 @@ public interface UserService {
     List<User> findUserByIds(Integer[] id);
 
     List<User> findUser(User user);
+
+    List<User> findUserByNS(User user);
 }

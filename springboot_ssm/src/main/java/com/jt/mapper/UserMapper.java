@@ -29,4 +29,7 @@ public interface UserMapper {
     List<User> findUserByIds(Integer[] ids);
 
     List<User> findUser(User user);
+
+    @Select("select * from demo_user where name=#{name} and sex=#{sex}")
+    List<User> findUserByNS(User user);
 }

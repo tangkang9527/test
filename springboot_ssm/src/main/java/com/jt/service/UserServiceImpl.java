@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService{
 
         return userMapper.findUser(user);
     }
+
+    @Override
+    public List<User> findUserByNS(User user) {
+        return userMapper.findUserByNS(user);
+    }
 }

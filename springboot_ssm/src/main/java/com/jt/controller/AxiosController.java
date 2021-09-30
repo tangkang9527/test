@@ -41,4 +41,16 @@ public class AxiosController {
 
         return userService.findUserByAS(user);
     }
+
+    /**
+     * 业务说明: 接收restFul请求
+     * URL:http://localhost:8090/axios/user/${name}/${sex}
+     * 参数: name/sex
+     * 结果: List<User>
+     */
+    @GetMapping("/user/{name}/{sex}")
+    public List<User> findUserByNS(User user){
+
+        return userService.findUserByNS(user);
+    }
 }
