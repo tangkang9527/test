@@ -34,6 +34,7 @@ public interface UserMapper {
     List<User> findUserByNS(User user);
     @Insert("insert into demo_user value(null,#{name},#{age},#{sex})")
     void saveUser(User user);
+
     @Update("update demo_user set name=#{name},age=#{age},sex=#{sex} where id=#{id}")
     void updateUser(User user);
 }
