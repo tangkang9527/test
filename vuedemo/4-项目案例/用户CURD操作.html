@@ -20,11 +20,11 @@
 			<div align="center">
 				<h3 align="center">用户修改操作</h3><br>
 				<p>
-						用户ID号: <input type="text" name="id" disabled/>
-						用户名称: <input type="text" name="name"/>
-						用户年龄: <input type="text" name="age"/>
-						用户性别: <input type="text" name="sex"/>
-						<button>修改</button>
+						用户ID号: <input type="text" name="id"   v-model="updateUser.id"   disabled/>
+						用户名称: <input type="text" name="name" v-model="updateUser.name"/>
+						用户年龄: <input type="text" name="age"  v-model="updateUser.age"/>
+						用户性别: <input type="text" name="sex"  v-model="updateUser.sex"/>
+						<button @click="updateUserCommit">修改</button>
 				</p>
 			</div>
 			<h1 align="center">用户列表展现案例</h1>
@@ -42,7 +42,7 @@
 					<td v-text="user.age"></td>
 					<td v-text="user.sex"></td>
 					<td>
-						<button>修改</button>
+						<button @click="updateBtn(user)">修改</button>
 						<button>删除</button>
 					</td>
 				</tr>
@@ -66,6 +66,12 @@
 						name: '',
 						age: '',
 						sex: ''
+					},
+					updateUser: {
+						id: '',
+						name: '',
+						age: '',
+						sex: ''
 					}
 				},
 				methods: {
@@ -84,6 +90,17 @@
 						//清空原有数据
 						this.addUser = {}
 						//如果新增成功,应该重新获取列表信息
+						this.getUserList()
+					},
+					updateBtn(user){
+						//将用户传递的数据绑定到修改页面中.
+						this.updateUser = user
+					},
+					async updateUserCommit(){
+						//实现数据的更新操作
+						let {data: result} = await axios.put("/axios/updateUser",this.updateUser)
+						alert(result)
+						this.updateUser = {}
 						this.getUserList()
 					}
 				},

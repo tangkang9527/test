@@ -81,4 +81,17 @@ public class AxiosController {
 
         return userService.findAll();
     }
+
+    /**
+     * 业务: 实现用户更新
+     * URL: /axios/updateUser
+     * 参数: json串
+     * 返回值: 提示信息
+     */
+    @PutMapping("updateUser")
+    public String updateUser(@RequestBody User user){
+
+        userService.updateUser(user);
+        return "更新操作成功!";
+    }
 }
