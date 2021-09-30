@@ -3,10 +3,7 @@ package com.jt.controller;
 import com.jt.pojo.User;
 import com.jt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,5 +49,23 @@ public class AxiosController {
     public List<User> findUserByNS(User user){
 
         return userService.findUserByNS(user);
+    }
+
+    /**
+     * 业务:实现用户的新增
+     * URL: http://localhost:8090/axios/saveUser
+     * 参数: {"name":"国庆快乐","age":72,"sex":"女"} JSON串
+     * 返回值: String 新增成功
+     * 知识点: post请求传递对象时,传递的数据是一个json串.不能直接为User对象赋值.
+     * 解决方案:
+     *        1.对象转化为JSON  @ResponseBody
+     *        2.JSON转化为对象  @RequestBody
+     *
+     */
+    @PostMapping("/saveUser")
+    public String saveUser(@RequestBody User user){
+        System.out.println(user);
+        userService.saveUser(user);
+        return "用户入库成功!!!";
     }
 }

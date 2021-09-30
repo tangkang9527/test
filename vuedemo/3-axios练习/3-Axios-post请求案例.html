@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Post请求练习</title>
+	</head>
+	<body>
+		<h1>Ajax项目前测试-POST</h1>
+		<!-- 导入js jar包 -->
+		<script src="../js/axios.js"></script>
+		<script>
+			
+			/**
+			 * 业务: 实现post请求入库操作 实现入库用户
+			 * 知识点: 
+			 * 		1.post请求中的参数 axios.post(url,user)
+			 * 
+			 */
+			let url = "http://localhost:8090/axios/saveUser"
+			let user = {
+				name: "国庆快乐",
+				age: 72,
+				sex: "女"
+			}
+			axios.post(url,user)
+				 .then(function(promise){
+					 console.log(promise.data)
+				 })
+			
+		</script>
+	</body>
+</html>

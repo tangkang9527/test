@@ -32,4 +32,6 @@ public interface UserMapper {
 
     @Select("select * from demo_user where name=#{name} and sex=#{sex}")
     List<User> findUserByNS(User user);
+    @Insert("insert into demo_user value(null,#{name},#{age},#{sex})")
+    void saveUser(User user);
 }

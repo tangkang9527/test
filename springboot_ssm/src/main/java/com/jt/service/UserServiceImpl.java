@@ -67,4 +67,10 @@ public class UserServiceImpl implements UserService{
     public List<User> findUserByNS(User user) {
         return userMapper.findUserByNS(user);
     }
+
+    //框架整合mybatis之后,数据自动提交.
+    @Override
+    public void saveUser(User user) {
+        userMapper.saveUser(user);
+    }
 }

@@ -24,4 +24,6 @@ public interface UserService {
     List<User> findUser(User user);
 
     List<User> findUserByNS(User user);
+
+    void saveUser(User user);
 }
