@@ -51,6 +51,23 @@
 				 .then(function(promise){
 					 console.log(promise.data)
 				 })
+				 
+			
+			/* 
+				案例三: 利用restFul实现数据获取
+				需求:  根据name/sex查询数据
+				模板字符串: 语法ES7的写法 一对反引号进行数据拼接
+							   通过${} 获取变量
+			 */	 
+			let name = "张三"
+			let sex = "男"
+			//let url3 = "http://localhost:8090/axios/user/"+name+"/"+sex
+			let url3 = `http://localhost:8090/axios/user/${name}/${sex}`
+			axios.get(url3)
+				 .then(function(promise){
+					 console.log(promise.data)
+				 })
+				 
 		</script>
 	</body>
 </html>
