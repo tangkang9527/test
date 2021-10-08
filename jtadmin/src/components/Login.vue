@@ -65,7 +65,7 @@ export default {
          //如果没有完成校验则直接返回
          if(!valid) return
 
-         //如果校验成功,则发起ajax请求
+        //如果校验成功,则发起ajax请求
         const {data: result} = await this.$http.post('/user/login',this.loginForm)
         if(result.status !== 200) return this.$message.error("用户登录失败")
         this.$message.success("用户登陆成功")
