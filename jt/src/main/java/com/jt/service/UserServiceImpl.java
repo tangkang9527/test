@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -26,6 +27,7 @@ public class UserServiceImpl implements UserService{
         //1.将密码加密
         byte[] bytes = user.getPassword().getBytes();
         String md5Pass = DigestUtils.md5DigestAsHex(bytes);
+        System.out.println(md5Pass);
         user.setPassword(md5Pass);
         //2.根据用户名和密文查询数据库
         User userDB = userMapper.findUserByUP(user);
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService{
             //查询没有数据.返回null
             return null;
         }
-        String token = "秘钥";
-        return token;
+        //秘钥特点: 唯一性,迷惑性  UUID:几乎可以保证唯一性
+        return UUID.randomUUID().toString().replace("-","");
     }
 }
