@@ -13,5 +13,5 @@ public class Rights extends BasePojo{
     private Integer parentId;
     private String path;
     private Integer level;
-    private List<Rights> children; //不是表格固有属性
+    private List<Rights> children; //一对多的数据结构
 }
