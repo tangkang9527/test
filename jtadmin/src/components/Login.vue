@@ -74,6 +74,7 @@ export default {
 
         //获取用户token信息
         let token = result.data
+        //利用浏览器的session保存用户信息
         window.sessionStorage.setItem("token",token)
 
         //用户登录成功之后,跳转到home页面
