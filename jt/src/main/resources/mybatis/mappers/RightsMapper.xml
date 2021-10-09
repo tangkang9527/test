@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jt.mapper.RightsMapper">
 
+    <!--
+        业务:查询左侧菜单列表 查询一级和二级
+        查询方式: 关联查询   左链接
+        查询条件:  父级.id = 子级.parent_id
+        映射的注意事项: 映射结果集时,不要出现重名字段.
+    -->
     <select id="getRightsList" resultMap="rightsRM">
         SELECT  p.id,p.name,p.parent_id,p.path,p.level,p.created,p.updated,
                 c.id c_id,c.name c_name,c.parent_id c_parent_id,
@@ -21,8 +27,9 @@
     -->
     <resultMap id="rightsRM" type="Rights" autoMapping="true">
         <id property="id" column="id"></id>
-        <!--封装一对多数据-->
+        <!--封装一对多数据  ofType 集合中元素的类型 -->
         <collection property="children" ofType="Rights">
+            <!--主键-->
             <id property="id" column="c_id"/>
             <result property="name" column="c_name"/>
             <result property="parentId" column="c_parent_id"/>
@@ -33,7 +40,25 @@
         </collection>
     </resultMap>
 
+    <!--
+        利用子查询的方式获取数据
+        弊端: 查询的效率低
+    -->
+    <select id="getRightsList2" resultMap="childrenRM">
+        select * from rights where parent_id=0
+    </select>
 
+    <resultMap id="childrenRM" type="Rights" autoMapping="true">
+        <id property="id" column="id"></id>
+        <!--一对多封装  column="子查询的条件中传递的参数"-->
+        <collection property="children" ofType="Rights"
+                    select="selectRightsByParentId" column="id"/>
+    </resultMap>
+
+    <!--单表查询子结果-->
+    <select id="selectRightsByParentId" resultType="Rights">
+        SELECT * FROM rights WHERE parent_id=#{id}
+    </select>
 
 
 </mapper>

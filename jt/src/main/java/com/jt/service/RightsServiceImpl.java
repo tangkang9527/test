@@ -16,7 +16,10 @@ public class RightsServiceImpl implements RightsService{
 
     @Override
     public List<Rights> getRightsList() {
+        //利用左连接的方式获取数据
+        //return rightsMapper.getRightsList();
 
-        return rightsMapper.getRightsList();
+        //利用子查询的方式获取数据
+        return rightsMapper.getRightsList2();
     }
 }

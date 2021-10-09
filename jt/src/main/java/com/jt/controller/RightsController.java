@@ -31,6 +31,4 @@ public class RightsController {
         List<Rights> list = rightsService.getRightsList();
         return SysResult.success(list);
     }
-
-
 }
