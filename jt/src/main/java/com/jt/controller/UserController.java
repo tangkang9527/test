@@ -2,6 +2,7 @@ package com.jt.controller;
 
 import com.jt.pojo.User;
 import com.jt.service.UserService;
+import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,17 @@ public class UserController {
         return SysResult.success(token);
     }
 
+    /**
+     * 需求: 利用分页查询用户信息
+     * URL:  /user/list
+     * 参数: http://localhost:8091/user/list?query=查询关键字&pageNum=1&pageSize=10
+     * 返回值: SysResult(pageResult)
+     */
+    @GetMapping("/list")
+    public SysResult getUserListByPage(PageResult pageResult){
 
+        pageResult = userService.getUserListByPage(pageResult);
+        return SysResult.success(pageResult);
+    }
 
 }

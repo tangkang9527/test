@@ -2,6 +2,7 @@ package com.jt.service;
 
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
+import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -38,5 +39,10 @@ public class UserServiceImpl implements UserService{
         }
         //秘钥特点: 唯一性,迷惑性  UUID:几乎可以保证唯一性
         return UUID.randomUUID().toString().replace("-","");
+    }
+
+    @Override
+    public PageResult getUserListByPage(PageResult pageResult) {
+        return null;
     }
 }
