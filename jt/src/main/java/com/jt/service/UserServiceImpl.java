@@ -63,8 +63,10 @@ public class UserServiceImpl implements UserService{
         int size = pageResult.getPageSize();    //条数
         int start = (pageResult.getPageNum()-1) * size; //起始位置
         String query = pageResult.getQuery();   //查询条件
+        //查询分页数据
         List<User> userList =
                 userMapper.findUserListByPage(start,size,query);
+        //将返回值结果进行封装
         return pageResult.setTotal(total).setRows(userList);
     }
 }
