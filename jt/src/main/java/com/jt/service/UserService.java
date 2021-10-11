@@ -16,4 +16,6 @@ public interface UserService {
     void updateStatusById(User user);
 
     void saveUser(User user);
+
+    User findUserById(Integer id);
 }

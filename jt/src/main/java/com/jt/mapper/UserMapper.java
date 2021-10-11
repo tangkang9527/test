@@ -12,7 +12,7 @@ public interface UserMapper {
     List<User> findAll();
     @Select("select * from user where username=#{username} and password=#{password}")
     User findUserByUP(User user);
-    @Select("SELECT COUNT(1) FROM user")
+    @Select("select count(1) from user")
     long findTotal();
     //将多值封装为单值  一般使用对象/集合/Map
     List<User> findUserListByPage(@Param("start") int start,
@@ -23,4 +23,7 @@ public interface UserMapper {
     void updateStatusById(User user);
 
     void saveUser(User user);
+
+    @Select("select * from user where id=#{id}")
+    User findUserById(Integer id);
 }

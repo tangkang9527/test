@@ -44,7 +44,6 @@
                 <el-button type="primary" icon="el-icon-edit" size="small" @click="updateUserBtn(scope.row)"></el-button>
                 <el-button type="danger" icon="el-icon-delete" size="small" @click="deleteUser(scope.row)"></el-button>
              </template>
-
            </el-table-column>
        </el-table>
 
@@ -242,7 +241,7 @@
           //如果校验成功 valid=true 如果失败 valid=false
           //如果校验失败 则停止数据
           if(!valid) return
-          
+
           const {data: result} = await this.$http.post('/user/addUser',this.addUserModel)
           if(result.status !== 200) return this.$message.error("用户新增失败")
           this.$message.success("用户新增成功")

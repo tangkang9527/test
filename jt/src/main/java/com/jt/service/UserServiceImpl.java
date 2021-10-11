@@ -93,4 +93,10 @@ public class UserServiceImpl implements UserService{
                 .setCreated(date).setUpdated(date);
         userMapper.saveUser(user);
     }
+
+    @Override
+    public User findUserById(Integer id) {
+
+        return userMapper.findUserById(id);
+    }
 }
