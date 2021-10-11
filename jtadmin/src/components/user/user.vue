@@ -207,10 +207,9 @@
     },
     methods: {
       async getUserList(){
-        const {data: result} = await this.$http.get('/user/list',{
-           params: this.queryInfo
-        })
+        const {data: result} = await this.$http.get('/user/list',{params: this.queryInfo})
         if(result.status !== 200) return this.$message.error("用户列表查询失败")
+        //将后台服务器数据返回值 交给Vue属性管理
         this.userList = result.data.rows
         this.total = result.data.total
         console.log("总记录数:"+this.total)

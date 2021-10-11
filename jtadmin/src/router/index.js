@@ -3,13 +3,17 @@ import VueRouter from 'vue-router'
 import Login from '../components/Login.vue'
 import ElementUI from '../components/ElementUI.vue'
 import Home from '../components/Home.vue'
+import User from '../components/user/user.vue'
 //使用路由机制
 Vue.use(VueRouter)
 const routes = [
   {path: '/', redirect: '/login'},
   {path: '/login', component: Login},
   {path: '/elementUI', component: ElementUI},
-  {path: '/home', component: Home}
+  /*实现父子组件跳转,使用children关联 */
+  {path: '/home', component: Home, children: [
+    {path: '/user', component: User}
+  ]}
 ]
 
 
