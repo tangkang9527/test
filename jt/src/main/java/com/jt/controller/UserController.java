@@ -55,4 +55,20 @@ public class UserController {
         return SysResult.success(pageResult);
     }
 
+    /**
+     * 需求: 根据Id修改状态
+     * URL:  /user/status/{id}/{status}  restFul
+     * 参数:  id/status
+     * 返回值: SysResult对象
+     */
+    @PutMapping("/status/{id}/{status}")
+    public SysResult updateStatusById(User user){
+
+        userService.updateStatusById(user);
+        return SysResult.success();
+    }
+
+
+
+
 }

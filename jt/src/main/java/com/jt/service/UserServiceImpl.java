@@ -69,4 +69,10 @@ public class UserServiceImpl implements UserService{
         //将返回值结果进行封装
         return pageResult.setTotal(total).setRows(userList);
     }
+
+    @Override
+    public void updateStatusById(User user) {
+
+        userMapper.updateStatusById(user);
+    }
 }

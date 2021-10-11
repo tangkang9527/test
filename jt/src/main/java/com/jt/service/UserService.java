@@ -12,4 +12,6 @@ public interface UserService {
     String findUserByUP(User user);
 
     PageResult getUserListByPage(PageResult pageResult);
+
+    void updateStatusById(User user);
 }
