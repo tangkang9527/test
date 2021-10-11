@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -76,8 +77,20 @@ public class UserServiceImpl implements UserService{
         userMapper.updateStatusById(user);
     }
 
+    /**
+     *   业务:实现业务数据封装
+     *   1.密码加密
+     *   2.设定默认状态
+     *   3.设定默认时间
+     */
     @Override
     public void saveUser(User user) {
-
+        String password = user.getPassword();
+        String MD5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
+        //获取当前时间
+        Date date = new Date();
+        user.setPassword(MD5Pass).setStatus(true)
+                .setCreated(date).setUpdated(date);
+        userMapper.saveUser(user);
     }
 }

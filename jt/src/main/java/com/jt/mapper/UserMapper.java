@@ -21,4 +21,6 @@ public interface UserMapper {
 
     @Update("update user set status = #{status} where id = #{id}")
     void updateStatusById(User user);
+
+    void saveUser(User user);
 }

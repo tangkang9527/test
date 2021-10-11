@@ -19,4 +19,12 @@
             </where>
             LIMIT #{start},#{size}
     </select>
+
+
+    <!--实现user入库操作-->
+    <insert id="saveUser">
+        insert into user value (null,#{username},#{password},#{phone},#{email},#{status},#{created},#{updated})
+    </insert>
+
+
 </mapper>
