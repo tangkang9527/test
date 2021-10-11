@@ -7,4 +7,16 @@
     <select id="findAll" resultType="User">
         select * from user
     </select>
+
+    <!--需求:query有参数 则添加like关键字
+        如果数据不等于null并且同时不等于''串时,条件生效 &&
+     -->
+    <select id="findUserListByPage" resultType="User">
+        SELECT * FROM USER
+            <where>
+                <!--<if test="query !=null &amp;&amp; query !=''" >username LIKE "%"#{query}"%"</if>-->
+                <if test="query !=null and query !=''" >username LIKE "%"#{query}"%"</if>
+            </where>
+            LIMIT #{start},#{size}
+    </select>
 </mapper>

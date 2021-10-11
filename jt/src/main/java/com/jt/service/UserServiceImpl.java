@@ -41,8 +41,30 @@ public class UserServiceImpl implements UserService{
         return UUID.randomUUID().toString().replace("-","");
     }
 
+    /**
+     * 分页Sql:  每页10条
+     *      select * from user limit 起始位置,查询条数
+     * 第一页:
+     *      select * from user limit 0,10  0-9 含头不含尾
+     * 第二页:
+     *      select * from user limit 10,10
+     * 第三页:
+     *      select * from user limit 20,10
+     * 第N页:
+     *      select * from user limit (页数-1)条数,条数
+     * @param pageResult
+     * @return
+     */
     @Override
     public PageResult getUserListByPage(PageResult pageResult) {
-        return null;
+        //1.总数
+        long total = userMapper.findTotal();
+        //2.分页结果
+        int size = pageResult.getPageSize();    //条数
+        int start = (pageResult.getPageNum()-1) * size; //起始位置
+        String query = pageResult.getQuery();   //查询条件
+        List<User> userList =
+                userMapper.findUserListByPage(start,size,query);
+        return pageResult.setTotal(total).setRows(userList);
     }
 }
