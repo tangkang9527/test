@@ -68,6 +68,21 @@ public class UserController {
         return SysResult.success();
     }
 
+    /**
+     * 用户新增
+     *  URL:  /user/addUser
+     *  参数:  JS对象经过浏览器解析变为JSON串
+     *        {"username":"111","password":"222","password2":"222","email":"22@qq.com","phone":"13111111111"}
+     *  返回值: SysResult对象
+     *      对象转化为JSON @ResponseBody
+     *      JSON转化为对象 @RequestBody  规则
+     */
+    @PostMapping("/addUser")
+    public SysResult saveUser(@RequestBody User user){
+
+        userService.saveUser(user);
+        return SysResult.success();
+    }
 
 
 

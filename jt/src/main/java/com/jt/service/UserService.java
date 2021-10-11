@@ -14,4 +14,6 @@ public interface UserService {
     PageResult getUserListByPage(PageResult pageResult);
 
     void updateStatusById(User user);
+
+    void saveUser(User user);
 }

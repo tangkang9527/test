@@ -71,7 +71,7 @@
     <!-- 编辑用户新增对话框 visible.sync 控制对话框的显示-->
     <el-dialog title="添加用户" :visible.sync="dialogVisible" width="50%" @close="closeDialog">
 
-      <!-- 定义用户提交表单数据-->
+      <!-- 定义用户提交表单数据 id="addUserRef"-->
       <el-form :model="addUserModel" :rules="rules" ref="addUserRef" label-width="100px" class="demo-ruleForm">
         <el-form-item label="用户名" prop="username">
           <el-input v-model="addUserModel.username"></el-input>
@@ -236,12 +236,13 @@
         //重置表格数据
         this.$refs.addUserRef.resetFields()
       },
-      //校验用户数据
+      //校验用户数据 valid 表示校验是否通过
       addUserBtn(){
         this.$refs.addUserRef.validate(async valid => {
+          //如果校验成功 valid=true 如果失败 valid=false
           //如果校验失败 则停止数据
           if(!valid) return
-          //console.log(this.addUserModel)
+          
           const {data: result} = await this.$http.post('/user/addUser',this.addUserModel)
           if(result.status !== 200) return this.$message.error("用户新增失败")
           this.$message.success("用户新增成功")
@@ -249,7 +250,6 @@
           this.dialogVisible = false
           //重新获取用户列表
           this.getUserList()
-
         })
       },
       async updateUserBtn(user){

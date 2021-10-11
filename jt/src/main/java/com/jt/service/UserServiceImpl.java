@@ -75,4 +75,9 @@ public class UserServiceImpl implements UserService{
 
         userMapper.updateStatusById(user);
     }
+
+    @Override
+    public void saveUser(User user) {
+
+    }
 }
