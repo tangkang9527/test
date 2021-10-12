@@ -26,4 +26,15 @@ class SpringbootSsmApplicationTests {
                         .setAge(10).setSex("男");
         userMapper.insert(user);
     }
+
+    /**
+     * 学习技巧: MP设计思想!!!!  对象
+     * 查询Id=1的用户
+     */
+    @Test
+    public void selectById() {
+        int id = 1;
+        User user = userMapper.selectById(id);
+        System.out.println(user);
+    }
 }
