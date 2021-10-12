@@ -5,6 +5,7 @@ import com.jt.pojo.User;
 import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -72,6 +73,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional
     public void updateStatusById(User user) {
 
         userMapper.updateStatusById(user);
@@ -84,6 +86,7 @@ public class UserServiceImpl implements UserService{
      *   3.设定默认时间
      */
     @Override
+    @Transactional
     public void saveUser(User user) {
         String password = user.getPassword();
         String MD5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
@@ -100,6 +103,7 @@ public class UserServiceImpl implements UserService{
         return userMapper.findUserById(id);
     }
 
+    @Transactional
     @Override
     public void updateUser(User user) {
         //设定当前时间
@@ -107,9 +111,17 @@ public class UserServiceImpl implements UserService{
         userMapper.updateUser(user);
     }
 
+    /**
+     *  问题: 数据是否真的被删除?????
+     *  解决方案: @Transactional
+     *  作用:
+     *      1.默认条件下,只拦截运行时异常
+     *      2.rollbackFor: 指定异常的类型回滚 rollbackFor = RuntimeException.class
+     *      3.noRollbackFor: 指定异常不回滚  noRollbackFor = RuntimeException.class
+     */
+    @Transactional
     @Override
     public void deleteUserById(Integer id) {
-        int a  = 1/0;
         userMapper.deleteUserById(id);
     }
 }
