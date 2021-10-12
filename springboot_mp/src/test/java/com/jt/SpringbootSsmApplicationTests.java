@@ -1,11 +1,14 @@
 package com.jt;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
 import com.jt.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 //效果:只要@Test测试方法执行,则整个Spring容器启动,可以根据自身的需要实现依赖注入
 //注意事项:  该注解只能在测试类中使用.
@@ -36,5 +39,23 @@ class SpringbootSsmApplicationTests {
         int id = 1;
         User user = userMapper.selectById(id);
         System.out.println(user);
+    }
+
+    /**
+     * 查询name="大乔",sex="女"的用户
+     * 规则: 根据对象中不为null的属性进行业务操作
+     * 语法:
+     *      1.QueryWrapper条件构造器 动态拼接where条件
+     *      2.默认的关系连接符 and
+     * 例子:
+     *      select * from demo_user where xx=xx and xx=xx
+     */
+    @Test
+    public void selectByNS() {
+       User user = new User();
+       user.setName("大乔").setSex("女");
+       QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
+       List<User> list = userMapper.selectList(queryWrapper);
+        System.out.println(list);
     }
 }
