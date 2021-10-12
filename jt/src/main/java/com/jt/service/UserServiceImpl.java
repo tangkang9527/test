@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUserById(Integer id) {
-
+        int a  = 1/0;
         userMapper.deleteUserById(id);
     }
 }
