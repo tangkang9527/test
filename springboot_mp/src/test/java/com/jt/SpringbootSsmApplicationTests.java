@@ -63,12 +63,9 @@ class SpringbootSsmApplicationTests {
      * 查询name="大乔",sex="女"的用户
      * 方式2: 利用条件构造器,构建条件
      * 说明:
-     *     1. eq =
-     *     2. gt >
-     *     3. lt >
-     *     4. ge >=
-     *     5. le <=
-     *     6. ne <>
+     *     1. eq =    2. gt >
+     *     3. lt <    4. ge >=
+     *     5. le <=   6. ne <>
      */
     @Test
     public void selectByNS2() {
