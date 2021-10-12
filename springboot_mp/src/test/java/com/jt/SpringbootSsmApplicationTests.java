@@ -75,4 +75,31 @@ class SpringbootSsmApplicationTests {
         List<User> list = userMapper.selectList(queryWrapper);
         System.out.println(list);
     }
+
+    /**
+     * 需求: 查询age>18岁的用户,并且sex=男.
+     */
+    @Test
+    public void selectByAS() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.gt("age",18)
+                    .eq("sex","男");
+        List<User> list = userMapper.selectList(queryWrapper);
+        System.out.println(list);
+    }
+
+    /**
+     * 需求: 查询name中包含"君",性别="女"
+     * Sql:  where name like "%君%"
+     * 需求2: 查询name中以"君"结尾的,性别="女"  like "%君"
+     */
+    @Test
+    public void selectLike() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.like("name","君")   //"%君%"
+        queryWrapper.likeLeft("name","君") //"%君"
+                    .eq("sex","女");
+        List<User> list = userMapper.selectList(queryWrapper);
+        System.out.println(list);
+    }
 }

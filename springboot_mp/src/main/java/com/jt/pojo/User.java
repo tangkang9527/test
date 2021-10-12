@@ -22,7 +22,6 @@ public class User implements Serializable {
      *  1.如果数据库中的字段与表中的属性名称一致,则可以省略不写
      *  2.如果对象名称与表名一致,则名称可以省略
      */
-
     @TableId(type = IdType.AUTO)//主键自增
     private Integer id;
     private String name;
