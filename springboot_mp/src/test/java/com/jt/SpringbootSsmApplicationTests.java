@@ -7,6 +7,7 @@ import com.jt.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -130,6 +131,30 @@ class SpringbootSsmApplicationTests {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sex","女");
         List list = userMapper.selectObjs(queryWrapper);
+        System.out.println(list);
+    }
+
+    /**
+     * 说明: 根据不为null的属性当做where 动态sql实现
+     * 需求: 查询age>18岁,sex=女的用户
+     * 参数说明:
+     *  1. boolean condition, true时,当前的条件才会成立
+     *                        false  该条件不拼接.
+     *  2.R column 字段信息
+     *  3.Object val 值
+     * 判断字符串API:
+     *      Spring提供的API StringUtils.hasLength(sex);
+     */
+    @Test
+    public void selectList2() {
+        Integer age = null;
+        String  sex = "女";
+        //boolean flag = sex !=null && "".equals(sex);
+        boolean flag = StringUtils.hasLength(sex);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.gt(age!=null, "age",age )
+                    .eq(flag,"sex",sex);
+        List<User> list = userMapper.selectList(queryWrapper);
         System.out.println(list);
     }
 }
