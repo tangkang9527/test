@@ -99,4 +99,17 @@ public class UserServiceImpl implements UserService{
 
         return userMapper.findUserById(id);
     }
+
+    @Override
+    public void updateUser(User user) {
+        //设定当前时间
+        user.setUpdated(new Date());
+        userMapper.updateUser(user);
+    }
+
+    @Override
+    public void deleteUserById(Integer id) {
+
+        userMapper.deleteUserById(id);
+    }
 }

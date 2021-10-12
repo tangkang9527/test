@@ -1,6 +1,7 @@
 package com.jt.mapper;
 
 import com.jt.pojo.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -26,4 +27,8 @@ public interface UserMapper {
 
     @Select("select * from user where id=#{id}")
     User findUserById(Integer id);
+    @Update("update user set phone=#{phone},email=#{email},updated=#{updated} where id=#{id}")
+    void updateUser(User user);
+    @Delete("delete from user where id=#{id}")
+    void deleteUserById(Integer id);
 }

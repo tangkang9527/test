@@ -4,6 +4,7 @@ import com.jt.pojo.User;
 import com.jt.service.UserService;
 import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,4 +97,30 @@ public class UserController {
         return SysResult.success(user);
     }
 
+
+    /**
+     * 用户修改操作
+     * URL:  /user/updateUser
+     * 参数:  User(id/phone/email) JSON串
+     * 返回值: SysResult对象
+     */
+    @PutMapping("/updateUser")
+    public SysResult updateUser(@RequestBody User user){
+
+        userService.updateUser(user);
+        return SysResult.success();
+    }
+
+    /**
+     * 删除数据
+     * URL: /user/{id}
+     * 参数: id
+     * 返回值: SysResult对象
+     */
+    @DeleteMapping("/{id}")
+    public SysResult deleteById(@PathVariable Integer id){
+        //防止与MP方法冲突 业务方法最好添加业务名称
+        userService.deleteUserById(id);
+        return SysResult.success();
+    }
 }
