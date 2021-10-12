@@ -13,8 +13,8 @@ spring:
     #关于密码0 开头的说明
     #password: "0123456"
 
-#SpringBoot整合mybatis
-mybatis:
+#SpringBoot整合mybatisPlus
+mybatis-plus:
   #指定别名包
   type-aliases-package: com.jt.pojo
   #加载指定的xml映射文件
