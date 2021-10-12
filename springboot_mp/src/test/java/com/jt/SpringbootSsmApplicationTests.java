@@ -43,10 +43,10 @@ class SpringbootSsmApplicationTests {
 
     /**
      * 查询name="大乔",sex="女"的用户
-     * 规则: 根据对象中不为null的属性进行业务操作
      * 语法:
-     *      1.QueryWrapper条件构造器 动态拼接where条件
-     *      2.默认的关系连接符 and
+     *      1.根据对象中不为null的属性进行业务操作
+     *      2.QueryWrapper条件构造器 动态拼接where条件
+     *      3.默认的关系连接符 and
      * 例子:
      *      select * from demo_user where xx=xx and xx=xx
      */
@@ -56,6 +56,26 @@ class SpringbootSsmApplicationTests {
        user.setName("大乔").setSex("女");
        QueryWrapper<User> queryWrapper = new QueryWrapper<>(user);
        List<User> list = userMapper.selectList(queryWrapper);
+        System.out.println(list);
+    }
+
+    /**
+     * 查询name="大乔",sex="女"的用户
+     * 方式2: 利用条件构造器,构建条件
+     * 说明:
+     *     1. eq =
+     *     2. gt >
+     *     3. lt >
+     *     4. ge >=
+     *     5. le <=
+     *     6. ne <>
+     */
+    @Test
+    public void selectByNS2() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name","大乔")
+                    .eq("sex","女");
+        List<User> list = userMapper.selectList(queryWrapper);
         System.out.println(list);
     }
 }
