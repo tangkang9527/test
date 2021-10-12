@@ -1,0 +1,44 @@
+#语法: 1.key:(空格)value结构
+#     2.注意层级缩进
+server:
+  port: 8090
+
+#整合1.数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jt?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: root
+    #关于密码0 开头的说明
+    #password: "0123456"
+
+#SpringBoot整合mybatis
+mybatis:
+  #指定别名包
+  type-aliases-package: com.jt.pojo
+  #加载指定的xml映射文件
+  mapper-locations: classpath:/mybatis/mappers/*.xml
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+
+#Sql日志文件打印
+logging:
+  level:
+    com.jt.mapper: debug
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

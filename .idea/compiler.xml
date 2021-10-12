@@ -13,6 +13,7 @@
         <module name="springboot_demo3_mybatis" />
         <module name="springboot_demo4_mybatis2" />
         <module name="springboot_ssm" />
+        <module name="springboot_mp" />
         <module name="springboot_pom" />
         <module name="jt" />
         <module name="springboot_demo5_mybatis3" />
@@ -26,6 +27,7 @@
       <module name="springboot_demo4_mybatis2" target="1.8" />
       <module name="springboot_demo5_mybatis3" target="1.8" />
       <module name="springboot_demo6_mybatis4" target="1.8" />
+      <module name="springboot_mp" target="1.8" />
       <module name="springboot_pom" target="1.8" />
       <module name="springboot_ssm" target="1.8" />
     </bytecodeTargetLevel>

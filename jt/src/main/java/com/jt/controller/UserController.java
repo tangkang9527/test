@@ -6,6 +6,7 @@ import com.jt.vo.PageResult;
 import com.jt.vo.SysResult;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -115,7 +115,7 @@ public class UserServiceImpl implements UserService{
      *  问题: 数据是否真的被删除?????
      *  解决方案: @Transactional
      *  作用:
-     *      1.默认条件下,只拦截运行时异常
+     *      1.默认条件下 只拦截运行时异常,实现事务回滚
      *      2.rollbackFor: 指定异常的类型回滚 rollbackFor = RuntimeException.class
      *      3.noRollbackFor: 指定异常不回滚  noRollbackFor = RuntimeException.class
      */
