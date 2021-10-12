@@ -118,4 +118,18 @@ class SpringbootSsmApplicationTests {
         List<User> list = userMapper.selectList(queryWrapper);
         System.out.println(list);
     }
+
+    /**
+     * 需求:
+     *  只想获取第一列数据(主键),sex="女"
+     * 用法: .selectObjs(queryWrapper);
+     * 实际用途: 做关联查询时可以使用
+     */
+    @Test
+    public void selectObjs() {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("sex","女");
+        List list = userMapper.selectObjs(queryWrapper);
+        System.out.println(list);
+    }
 }
