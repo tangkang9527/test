@@ -4,6 +4,7 @@ import Login from '../components/Login.vue'
 import ElementUI from '../components/ElementUI.vue'
 import Home from '../components/Home.vue'
 import User from '../components/user/user.vue'
+import ItemCat from '../components/items/ItemCat.vue'
 //使用路由机制
 Vue.use(VueRouter)
 const routes = [
@@ -12,7 +13,8 @@ const routes = [
   {path: '/elementUI', component: ElementUI},
   /*实现父子组件跳转,使用children关联 */
   {path: '/home', component: Home, children: [
-    {path: '/user', component: User}
+    {path: '/user', component: User},
+    {path: '/itemCat', component: ItemCat}
   ]}
 ]
 

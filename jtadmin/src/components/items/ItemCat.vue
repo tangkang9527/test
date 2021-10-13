@@ -138,9 +138,7 @@
     },
     methods: {
       async findItemCatList() {
-        const {
-          data: result
-        } = await this.$http.get("/itemCat/findItemCatList/3")
+        const {data: result} = await this.$http.get("/itemCat/findItemCatList/3")
         if (result.status !== 200) return this.$message.error("获取商品分类列表失败!!")
         this.itemCatList = result.data
       },
