@@ -36,8 +36,9 @@ public class ItemCatServiceImpl implements ItemCatService{
         List<ItemCat> list = itemCatMapper.selectList(null);
         //1.遍历数据
         for(ItemCat itemCat:list){
+            //获取parentId
             int parentId = itemCat.getParentId();
-            if(map.containsKey(parentId)){
+            if(map.containsKey(parentId)){  //判断集合中是否有key
                 //表示数据存在,将自己追加
                 map.get(parentId).add(itemCat);
             }else{
