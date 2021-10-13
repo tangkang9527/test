@@ -137,6 +137,11 @@ public class ItemCatServiceImpl implements ItemCatService{
         itemCatMapper.insert(itemCat);
     }
 
+    @Override
+    public void deleteItemCat(ItemCat itemCat) {
+
+    }
+
 
     /**
      * 弊端: 由于多次循环遍历 查询数据库,导致数据库查询次数太多效率极低.

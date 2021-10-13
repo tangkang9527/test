@@ -9,4 +9,6 @@ public interface ItemCatService {
     List<ItemCat> findItemCatList(Integer level);
 
     void saveItemCat(ItemCat itemCat);
+
+    void deleteItemCat(ItemCat itemCat);
 }

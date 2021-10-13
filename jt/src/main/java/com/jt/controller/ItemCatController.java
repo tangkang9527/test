@@ -43,4 +43,17 @@ public class ItemCatController {
         return SysResult.success();
     }
 
+    /**
+     * 需求: 实现商品分类删除操作
+     * 类型: delete
+     * URL: /itemCat/deleteItemCat?id=xx&level=xx
+     * 参数:  id/level
+     * 返回值: SysResult
+     */
+    @DeleteMapping("/deleteItemCat")
+    public SysResult deleteItemCat(ItemCat itemCat){
+
+        itemCatService.deleteItemCat(itemCat);
+        return SysResult.success();
+    }
 }
