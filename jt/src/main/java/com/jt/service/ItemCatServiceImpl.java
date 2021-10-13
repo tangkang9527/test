@@ -79,12 +79,37 @@ public class ItemCatServiceImpl implements ItemCatService{
      * @return
      */
     public List<ItemCat> getThreeList(Map<Integer,List<ItemCat>> map){
-
-        return null;
+        //1.获取1-2数据信息  包含了2级的children
+        List<ItemCat> oneList = getTwoList(map);
+        //2.编辑一级数据,获取二级数据
+        for(ItemCat oneItemCat : oneList){
+            List<ItemCat> twoList = oneItemCat.getChildren();
+            if(twoList == null || twoList.size()==0){
+                //跳过本地循环,进入下一次循环
+                continue;
+            }
+            //3.遍历二级数据,查询三级信息
+            for (ItemCat twoItemCat : twoList){
+                //查询三级  parentId = 二级ID
+                int parentId = twoItemCat.getId();
+                List<ItemCat> threeList = map.get(parentId);
+                //将三级封装到二级中
+                twoItemCat.setChildren(threeList);
+            }
+        }
+        return oneList;
     }
 
+    /**
+     * 如果使用常规的写法 耗时: 900毫秒
+     *                 经过优化: 20毫秒
+     *  CURD: 好代码!!!
+     * @param level
+     * @return
+     */
     @Override
     public List<ItemCat> findItemCatList(Integer level) {
+        long startTime = System.currentTimeMillis();
         //获取所有集合数据
         Map<Integer,List<ItemCat>> map = getMap();
         if(level == 1){
@@ -97,7 +122,10 @@ public class ItemCatServiceImpl implements ItemCatService{
         }
 
         //获取三级菜单数据 1-2-3
-        return getThreeList(map);
+        List<ItemCat> allList = getThreeList(map);
+        long endTime = System.currentTimeMillis();
+        System.out.println("耗时:"+(endTime-startTime)+"毫秒");
+        return allList;
     }
 
 
