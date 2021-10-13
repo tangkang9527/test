@@ -149,6 +149,7 @@ class SpringbootSsmApplicationTests {
     public void selectList2() {
         Integer age = null;
         String  sex = "女";
+        //判断字符串是否为null
         //boolean flag = sex !=null && "".equals(sex);
         boolean flag = StringUtils.hasLength(sex);
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();

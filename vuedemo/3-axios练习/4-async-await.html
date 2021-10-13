@@ -22,6 +22,21 @@
 			 * 		解决了ajax中的头号难题, "回调地狱"问题
 			 */
 			
+			axios.get("xxxx")
+				 .then(user => {
+					 axios.get("xxx",{params: user}).then( dog => {
+						 axios.get("xxx",{params: dog})
+							.then(xxx => {
+								xxxxx
+							})
+					 })
+				 })
+			
+			let aaa = await axios.get("/getUser")
+			let bbb = await axios.get2("/getUser",{params:aaa})
+			let ccc = await axios.get2("/getUser",{params:aaa})
+			
+			
 			//1.定义函数
 			async function getUser(){
 				let promise = await axios.get("/getUser")
