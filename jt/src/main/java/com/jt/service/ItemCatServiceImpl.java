@@ -5,11 +5,9 @@ import com.jt.mapper.ItemCatMapper;
 import com.jt.pojo.ItemCat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ItemCatServiceImpl implements ItemCatService{
@@ -128,9 +126,15 @@ public class ItemCatServiceImpl implements ItemCatService{
         return allList;
     }
 
+    //优化:自动生成时间
     @Override
+    @Transactional
     public void saveItemCat(ItemCat itemCat) {
-
+        Date date = new Date();
+        itemCat.setStatus(true)
+                .setCreated(date)
+                .setUpdated(date);
+        itemCatMapper.insert(itemCat);
     }
 
 
