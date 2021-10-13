@@ -52,15 +52,36 @@ public class ItemCatServiceImpl implements ItemCatService{
         return map;
     }
 
+    //该方法获取1-2级数据信息
+    public List<ItemCat> getTwoList(Map<Integer,List<ItemCat>> map){
+        //1.先查询一级菜单数据
+        List<ItemCat> oneList = map.get(0);
+        //2.遍历每个一级菜单去封装二级数据
+        for(ItemCat oneItemCat : oneList){
+            //parent_id = 一级ID
+            int parentId = oneItemCat.getId();
+            //查询二级数据
+            List<ItemCat> twoList = map.get(parentId);
+            oneItemCat.setChildren(twoList);
+        }
+        return oneList;
+    }
+
 
 
     @Override
     public List<ItemCat> findItemCatList(Integer level) {
         //获取所有集合数据
         Map<Integer,List<ItemCat>> map = getMap();
+        if(level == 1){
+            //1.一级商品分类信息
+            return map.get(0);
+        }
+        if(level == 3){ //获取一级菜单和二级菜单
+            return getTwoList(map);
+        }
 
-        //一级商品分类信息
-        return map.get(0);
+        return null;
     }
 
 
