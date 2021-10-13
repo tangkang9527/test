@@ -183,7 +183,7 @@ public class ItemCatServiceImpl implements ItemCatService{
             itemCatMapper.delete(queryWrapper);
             //将所有的1-2级的ID,封装到一个集合中
             idList.add(id);
-            //将所有1级2级全部删除  batch 实质就是in关键字
+            //将所有1级2级全部删除  Sql where id in (xx,xx,xx,xx)
             itemCatMapper.deleteBatchIds(idList);
         }else{
             itemCatMapper.deleteById(id);
