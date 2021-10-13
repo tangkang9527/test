@@ -30,4 +30,17 @@ public class ItemCatController {
         return SysResult.success(list);
     }
 
+    /**
+     * 实现商品分类新增操作
+     * URL: /itemCat/saveItemCat
+     * 参数:  this.itemCatForm  JSON
+     * 返回值: SysResult对象
+     */
+    @PostMapping("/saveItemCat")
+    public SysResult saveItemCat(@RequestBody ItemCat itemCat){
+
+        itemCatService.saveItemCat(itemCat);
+        return SysResult.success();
+    }
+
 }

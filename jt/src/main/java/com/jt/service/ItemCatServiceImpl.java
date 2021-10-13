@@ -128,6 +128,11 @@ public class ItemCatServiceImpl implements ItemCatService{
         return allList;
     }
 
+    @Override
+    public void saveItemCat(ItemCat itemCat) {
+
+    }
+
 
     /**
      * 弊端: 由于多次循环遍历 查询数据库,导致数据库查询次数太多效率极低.
