@@ -62,12 +62,26 @@ public class ItemCatServiceImpl implements ItemCatService{
             int parentId = oneItemCat.getId();
             //查询二级数据
             List<ItemCat> twoList = map.get(parentId);
+            //将数据进行封装
             oneItemCat.setChildren(twoList);
         }
+        //返回一级数据
         return oneList;
     }
 
+    /**
+     * 实现思路:
+     *      1. 获取二级分类列表信息
+     *      2. 遍历一级菜单,获取二级数据
+     *      3. 根据二级菜单查询三级数据   防止二级数据为null的现象
+     *      4. 将三级数据封装到二级中
+     * @param map
+     * @return
+     */
+    public List<ItemCat> getThreeList(Map<Integer,List<ItemCat>> map){
 
+        return null;
+    }
 
     @Override
     public List<ItemCat> findItemCatList(Integer level) {
@@ -77,11 +91,13 @@ public class ItemCatServiceImpl implements ItemCatService{
             //1.一级商品分类信息
             return map.get(0);
         }
-        if(level == 3){ //获取一级菜单和二级菜单
+        //获取一级菜单和二级菜单
+        if(level == 2){
             return getTwoList(map);
         }
 
-        return null;
+        //获取三级菜单数据 1-2-3
+        return getThreeList(map);
     }
 
 
