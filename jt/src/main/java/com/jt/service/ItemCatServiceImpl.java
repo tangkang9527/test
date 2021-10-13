@@ -137,9 +137,57 @@ public class ItemCatServiceImpl implements ItemCatService{
         itemCatMapper.insert(itemCat);
     }
 
+    /**
+     * 业务: 如果是父级 则应该删除子级和自己.
+     * 思路:
+     *      1. 判断是否为3级标签  直接删除
+     *      2. 判断是否为2级标签  先删除三级再删除二级
+     *      3. 判断是否为1级标签  先查询二级,再删除三级和二级再删除一级
+     * @param itemCat
+     */
     @Override
+    @Transactional
     public void deleteItemCat(ItemCat itemCat) {
+        if(itemCat.getLevel() == 3){
+            int id = itemCat.getId();
+            itemCatMapper.deleteById(id);
+            return;
+        }
+        if(itemCat.getLevel() == 2){ //id=二级id
+            //Sql: xxx where parent_id = 二级ID
+            int id = itemCat.getId();
+            QueryWrapper<ItemCat> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("parent_id",id);
+            //删除的是三级数据
+            itemCatMapper.delete(queryWrapper);
+            //再删除自己
+            itemCatMapper.deleteById(id);
+            return;
+        }
 
+        /**
+         * 删除一级菜单
+         */
+        //1.查询二级数据  Sql: where parent_id=id
+        QueryWrapper queryWrapper = new QueryWrapper();
+        int id = itemCat.getId();
+        queryWrapper.eq("parent_id",id);
+        //由于是删除的业务,只需要获取id即可 所以使用objs
+        List idList = itemCatMapper.selectObjs(queryWrapper);
+
+        //判断是否有二级数据.如果有直接删除.如果没有直接删除一级
+        if(idList.size()>0){
+            //根据二级Id删除三级数据 Sql where parent_id in (1,2,3)
+            queryWrapper.clear();
+            queryWrapper.in("parent_id",idList);
+            itemCatMapper.delete(queryWrapper);
+            //将所有的1-2级的ID,封装到一个集合中
+            idList.add(id);
+            //将所有1级2级全部删除  batch 实质就是in关键字
+            itemCatMapper.deleteBatchIds(idList);
+        }else{
+            itemCatMapper.deleteById(id);
+        }
     }
 
 
