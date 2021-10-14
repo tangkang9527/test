@@ -48,6 +48,8 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public void saveItem(ItemVO itemVO) {
-
+        Item item = itemVO.getItem();
+        item.setStatus(true);
+        itemMapper.insert(item);
     }
 }
