@@ -41,6 +41,7 @@ public class ItemServiceImpl implements ItemService{
         long total = page.getTotal();
         //获取记录数
         List<Item> rows = page.getRecords();
+        //将数据封装
         return pageResult.setTotal(total).setRows(rows);
     }
 }
