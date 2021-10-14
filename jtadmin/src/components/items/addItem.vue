@@ -228,7 +228,6 @@
           itemDesc: this.itemDesc
         }
 
-
         console.log(submitAddItem)
         let {data: result} = await this.$http.post("/item/saveItem",submitAddItem)
         if(result.status !== 200) return this.$message.error("商品添加失败")

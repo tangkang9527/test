@@ -11,13 +11,16 @@ import org.springframework.context.annotation.Configuration;
 public class MybatisPlusConfig {
 
    /**
+    *  JS-钩子函数-生命周期函数!!!!!!!!
+    *  MP生命周期方法:  itemMapper.selectPage--自动调用MybatisPlusInterceptor对象
     *  @Bean作用: 将方法的返回值交给Spring容器管理
     * @return
     */
    @Bean
    public MybatisPlusInterceptor mybatisPlusInterceptor() {
        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
-       interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MARIADB));
+       interceptor.addInnerInterceptor
+               (new PaginationInnerInterceptor(DbType.MARIADB));
        return interceptor;
    }
 

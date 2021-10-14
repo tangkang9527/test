@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jt.mapper.ItemMapper;
 import com.jt.pojo.Item;
+import com.jt.vo.ItemVO;
 import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,10 @@ public class ItemServiceImpl implements ItemService{
         List<Item> rows = page.getRecords();
         //将数据封装
         return pageResult.setTotal(total).setRows(rows);
+    }
+
+    @Override
+    public void saveItem(ItemVO itemVO) {
+
     }
 }

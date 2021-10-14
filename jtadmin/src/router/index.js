@@ -6,6 +6,7 @@ import Home from '../components/Home.vue'
 import User from '../components/user/user.vue'
 import ItemCat from '../components/items/ItemCat.vue'
 import Item from '../components/items/Item.vue'
+import AddItem from '../components/items/addItem.vue'
 //使用路由机制
 Vue.use(VueRouter)
 const routes = [
@@ -16,7 +17,8 @@ const routes = [
   {path: '/home', component: Home, children: [
     {path: '/user', component: User},
     {path: '/itemCat', component: ItemCat},
-    {path: '/item', component: Item}
+    {path: '/item', component: Item},
+    {path: '/item/addItem', component: AddItem}
   ]}
 ]
 
