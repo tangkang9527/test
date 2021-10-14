@@ -130,10 +130,10 @@ public class ItemCatServiceImpl implements ItemCatService{
     @Override
     @Transactional
     public void saveItemCat(ItemCat itemCat) {
-        Date date = new Date();
-        itemCat.setStatus(true)
-                .setCreated(date)
-                .setUpdated(date);
+        //Date date = new Date();
+        itemCat.setStatus(true);
+                //.setCreated(date)
+                //.setUpdated(date);
         itemCatMapper.insert(itemCat);
     }
 
