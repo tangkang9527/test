@@ -11,4 +11,8 @@ public interface ItemCatService {
     void saveItemCat(ItemCat itemCat);
 
     void deleteItemCat(ItemCat itemCat);
+
+    void updateStatus(ItemCat itemCat);
+
+    void updateItemCat(ItemCat itemCat);
 }

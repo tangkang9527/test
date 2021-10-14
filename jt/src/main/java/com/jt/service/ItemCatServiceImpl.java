@@ -190,6 +190,32 @@ public class ItemCatServiceImpl implements ItemCatService{
         }
     }
 
+    /**
+     *   id/status
+     *   Sql: update item_cat set status=xx,updated=xx
+     *        where id=xx
+     *   解释: updateById ID当做唯一where条件,其它不为null的属性
+     *        当做set条件
+     */
+    @Override
+    public void updateStatus(ItemCat itemCat) {
+
+        itemCatMapper.updateById(itemCat);
+    }
+
+    /**
+     * itemCat对象,不为null的数据执行业务
+     * 只改了name属性  set name=xxx where id=xx
+     * @param itemCat
+     */
+    @Override
+    public void updateItemCat(ItemCat itemCat) {
+        ItemCat temp = new ItemCat();
+        temp.setId(itemCat.getId())
+                .setName(itemCat.getName());
+        itemCatMapper.updateById(temp);
+    }
+
 
     /**
      * 弊端: 由于多次循环遍历 查询数据库,导致数据库查询次数太多效率极低.

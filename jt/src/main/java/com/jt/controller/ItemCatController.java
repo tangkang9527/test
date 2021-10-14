@@ -56,4 +56,30 @@ public class ItemCatController {
         itemCatService.deleteItemCat(itemCat);
         return SysResult.success();
     }
+
+    /**
+     * 需求:修改状态
+     * URL:  /itemCat/status/{id}/{status}
+     * 参数: id/status
+     * 返回值: SysResult
+     */
+    @PutMapping("/status/{id}/{status}")
+    public SysResult updateStatus(ItemCat itemCat){
+
+        itemCatService.updateStatus(itemCat);
+        return SysResult.success();
+    }
+
+    /**
+     * 需求: 修改商品分类信息
+     * URL: /itemCat/updateItemCat
+     * 参数:  表单数据 ItemCat对象 {id,name,parentId....}
+     * 返回值: SysResult对象
+     */
+    @PutMapping("/updateItemCat")
+    public SysResult updateItemCat(@RequestBody ItemCat itemCat){
+
+        itemCatService.updateItemCat(itemCat);
+        return SysResult.success();
+    }
 }

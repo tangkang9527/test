@@ -183,7 +183,7 @@
         //先将整个表单进行校验
         this.$refs.itemCatFormRef.validate(async validate => {
           if (!validate) return
-          const {data: result} 
+          const {data: result}
               = await this.$http.post("/itemCat/saveItemCat", this.itemCatForm)
           if (result.status !== 200) return this.$message.error("新增商品分类失败")
           this.$message.success("新增商品分类成功!!!")
