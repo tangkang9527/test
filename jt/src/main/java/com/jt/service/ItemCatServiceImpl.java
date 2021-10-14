@@ -169,7 +169,7 @@ public class ItemCatServiceImpl implements ItemCatService{
          * 删除一级菜单
          */
         //1.查询二级数据  Sql: where parent_id=id
-        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryWrapper<ItemCat> queryWrapper = new QueryWrapper();
         int id = itemCat.getId();
         queryWrapper.eq("parent_id",id);
         //由于是删除的业务,只需要获取id即可 所以使用objs
@@ -198,6 +198,7 @@ public class ItemCatServiceImpl implements ItemCatService{
      *        当做set条件
      */
     @Override
+    @Transactional
     public void updateStatus(ItemCat itemCat) {
 
         itemCatMapper.updateById(itemCat);
@@ -209,6 +210,7 @@ public class ItemCatServiceImpl implements ItemCatService{
      * @param itemCat
      */
     @Override
+    @Transactional
     public void updateItemCat(ItemCat itemCat) {
         ItemCat temp = new ItemCat();
         temp.setId(itemCat.getId())
