@@ -30,6 +30,4 @@ public class ItemController {
         pageResult = itemService.getItemList(pageResult);
         return SysResult.success(pageResult);
     }
-
-
 }

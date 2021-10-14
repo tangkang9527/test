@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
+
 @Service
 public class ItemServiceImpl implements ItemService{
 
@@ -31,10 +33,14 @@ public class ItemServiceImpl implements ItemService{
         boolean flag = StringUtils.hasLength(pageResult.getQuery());
         QueryWrapper<Item> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(flag,"title",pageResult.getQuery());
-        //编辑MP的分页对象
-        IPage<Item> page = new Page<>();
-        itemMapper.selectPage(page,queryWrapper);
 
-        return null;
+        //编辑MP的分页对象 四个属性有用(页数/条数/总数/记录)  传递=页数/条数
+        IPage<Item> page = new Page<>(pageResult.getPageNum(),pageResult.getPageSize());
+        page = itemMapper.selectPage(page,queryWrapper);
+        //获取总数
+        long total = page.getTotal();
+        //获取记录数
+        List<Item> rows = page.getRecords();
+        return pageResult.setTotal(total).setRows(rows);
     }
 }
