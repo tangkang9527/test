@@ -26,5 +26,6 @@
         insert into user value (null,#{username},#{password},#{phone},#{email},#{status},#{created},#{updated})
     </insert>
 
-
+   <!-- <insert id="" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="id"></insert>-->
 </mapper>
