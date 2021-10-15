@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class FileServiceImpl implements FileService{
@@ -21,7 +22,7 @@ public class FileServiceImpl implements FileService{
      *      1. 校验图片类型    xx.jpg
      *      2. 校验是否为恶意程序 xx.exe.jpg
      *      3. 将文件分目录存储.
-     *      4. 为了保证图片唯一性 ,自定义文件名称
+     *      4. 为了保证图片唯一性 ,UUID
      * @param file
      * @return
      */
@@ -56,6 +57,22 @@ public class FileServiceImpl implements FileService{
                 //如果目录不存在时, 创建目录
                 dirFile.mkdirs();
             }
+
+            //第四步: 使用uuid实现文件名称 uuid.jpg
+            //4.1 生成UUID
+            String uuid = UUID.randomUUID()
+                              .toString().replace("-","");
+            //截取文件类型
+            int index = fileName.lastIndexOf(".");
+            String fileType = fileName.substring(index);
+            //生成新文件名称
+            String newFile = uuid + fileType;
+
+            //第五步:实现文件上传  全路径 再上传
+            // E:/images/2021/10/15/uuid.jpg
+            String path = dirPath + newFile;
+            file.transferTo(new File(path));
+            System.out.println("文件上传成功!!!!");
 
         } catch (IOException e) {
             e.printStackTrace();
