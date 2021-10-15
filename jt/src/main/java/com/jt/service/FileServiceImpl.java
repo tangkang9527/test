@@ -82,6 +82,7 @@ public class FileServiceImpl implements FileService{
             String fileNameVO = newFile;
             //6.3 网络地址 http://image.jt.com/xx/uuid.jpg
             String url =  urlPath + virtualPath;
+            System.out.println(url);
             return new ImageVO(virtualPath,url,fileNameVO);
 
         } catch (IOException e) {
