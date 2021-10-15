@@ -24,8 +24,8 @@
         </el-col>
       </el-row>
 
-      <!-- 定义表格 
-          :data 表示数据的来源  
+      <!-- 定义表格
+          :data 表示数据的来源
           prop:对象的属性
           label="显示的名称"
       -->
@@ -38,6 +38,30 @@
               <el-button type="danger">删除</el-button>
           </el-table-column>
      </el-table>
+
+    <h1>图片上传操作</h1>
+    <!--
+      action: 图片上传的网址
+      :on-preview 点击文件列表中已上传的文件时的钩子
+      :on-remove	文件列表移除文件时的钩子
+      :file-list  用户看到的图片的列表信息
+      name	上传的文件字段名	string	—	file
+      数据上传的形式:  关键字默认:file=文件信息
+    -->
+    <el-upload
+      class="upload-demo"
+      action="https://jsonplaceholder.typicode.com/posts/"
+      :on-preview="handlePreview"
+      :on-remove="handleRemove"
+      :file-list="fileList"
+      list-type="picture">
+      <el-button size="small" type="primary">点击上传</el-button>
+      <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+    </el-upload>
+
+
+
+
     </el-card>
 
     <!-- 当用户点击修改按钮时,弹出对话框
@@ -72,7 +96,8 @@ export default {
                         address: '上海市普陀区金沙江路 1517 弄'
                       }
                     ],
-        dialogVisible: false
+        dialogVisible: false,
+        fileList: [{name: 'food.jpeg', url: 'https://img14.360buyimg.com/n0/jfs/t1/94581/19/18436/123859/6141ca9bEdc318374/892cc4297882fe0d.jpg'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
       }
     },
     methods: {
