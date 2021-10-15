@@ -1,6 +1,7 @@
 package com.jt.service;
 
 import com.jt.vo.ImageVO;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -91,8 +92,18 @@ public class FileServiceImpl implements FileService{
         }
     }
 
+    /**
+     * 1.准备全文件路径
+     * 2.实现文件删除
+     * @param virtualPath
+     */
     @Override
     public void deleteFile(String virtualPath) {
-
+        String path = localDir + virtualPath;
+        File file = new File(path);
+        if(file.exists()){
+            //如果文件存在,则删除文件
+            file.delete();
+        }
     }
 }
