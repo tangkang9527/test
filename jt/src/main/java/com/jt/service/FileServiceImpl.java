@@ -4,6 +4,10 @@ import com.jt.vo.ImageVO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 @Service
 public class FileServiceImpl implements FileService{
     /**
@@ -25,6 +29,22 @@ public class FileServiceImpl implements FileService{
             return null;
         }
         System.out.println("图片类型正确的!!!!!!");
+        //第二步 防止恶意程序 判断图片是否有宽度和高度
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file.getInputStream());
+            int width = bufferedImage.getWidth();
+            int height = bufferedImage.getHeight();
+            if(width == 0 || height == 0){
+                return null;
+            }
+            System.out.println("用户上传的是图片");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
         return null;
     }
 }
