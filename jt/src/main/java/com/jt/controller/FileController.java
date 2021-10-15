@@ -1,6 +1,9 @@
 package com.jt.controller;
 
+import com.jt.service.FileService;
+import com.jt.vo.ImageVO;
 import com.jt.vo.SysResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,9 @@ import java.io.IOException;
 @RequestMapping("/file")
 public class FileController {
 
+    @Autowired
+    private FileService fileService;
+
     /**
      * 需求: 实现文件上传
      * URL地址: "http://localhost:8091/file/upload",
@@ -29,6 +35,26 @@ public class FileController {
      * 控制图片大小: 默认大小1M
      */
     @PostMapping("/upload")
+    public SysResult upload2(MultipartFile file){
+
+        ImageVO imageVO = fileService.upload(file);
+        if(imageVO == null){
+            return SysResult.fail();
+        }
+        return SysResult.success(imageVO);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //@PostMapping("/upload")
     public SysResult upload(MultipartFile file) throws IOException {
         //1.获取图片的名称
         String fileName = file.getOriginalFilename();
