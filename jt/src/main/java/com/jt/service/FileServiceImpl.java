@@ -16,6 +16,7 @@ import java.util.UUID;
 public class FileServiceImpl implements FileService{
 
     private String localDir = "E:/images";
+    private String urlPath = "http://image.jt.com";
 
     /**
      * 考虑的问题:
@@ -74,12 +75,18 @@ public class FileServiceImpl implements FileService{
             file.transferTo(new File(path));
             System.out.println("文件上传成功!!!!");
 
+            //第六步: 返回ImageVO数据
+            //6.1 虚拟路径只写动态变化的数据  /2021/11/11/uuid.jpg
+            String virtualPath = dateDir + newFile;
+            //6.2 真实图片名称
+            String fileNameVO = newFile;
+            //6.3 网络地址 http://image.jt.com/xx/uuid.jpg
+            String url =  urlPath + virtualPath;
+            return new ImageVO(virtualPath,url,fileNameVO);
+
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-
-
-        return null;
     }
 }
