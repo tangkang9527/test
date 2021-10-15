@@ -4,10 +4,7 @@ import com.jt.service.FileService;
 import com.jt.vo.ImageVO;
 import com.jt.vo.SysResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -44,7 +41,19 @@ public class FileController {
         return SysResult.success(imageVO);
     }
 
+    /**
+     * 需求: 删除图片信息
+     * url: http://localhost:8091/file/deleteFile
+     * 类型: delete
+     * 参数: virtualPath
+     * 返回值: SysResult对象
+     */
+    @DeleteMapping("/deleteFile")
+    public SysResult deleteFile(String virtualPath){
 
+        fileService.deleteFile(virtualPath);
+        return SysResult.success();
+    }
 
 
 

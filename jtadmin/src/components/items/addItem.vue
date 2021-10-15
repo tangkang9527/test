@@ -54,7 +54,7 @@
               <el-button size="small" type="primary">点击上传</el-button>
               <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
             </el-upload>
-            
+
           </el-tab-pane>
           <el-tab-pane label="商品详情" name="2">
             <!-- 定义富文本编辑器-->
@@ -182,6 +182,7 @@
       },
       //移除图片的方法
       async handleRemove(file) {
+        console.log(file.response.data.virtualPath)
         //移除数组中的数据
         let virtualPath = file.response.data.virtualPath
         //通过findIndex函数 获取数组中指定数据的位置

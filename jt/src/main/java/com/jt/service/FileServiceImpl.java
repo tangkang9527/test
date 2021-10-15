@@ -90,4 +90,9 @@ public class FileServiceImpl implements FileService{
             return null;
         }
     }
+
+    @Override
+    public void deleteFile(String virtualPath) {
+
+    }
 }
