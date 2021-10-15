@@ -6,10 +6,16 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class FileServiceImpl implements FileService{
+
+    private String localDir = "E:/images";
+
     /**
      * 考虑的问题:
      *      1. 校验图片类型    xx.jpg
@@ -31,13 +37,25 @@ public class FileServiceImpl implements FileService{
         System.out.println("图片类型正确的!!!!!!");
         //第二步 防止恶意程序 判断图片是否有宽度和高度
         try {
-            BufferedImage bufferedImage = ImageIO.read(file.getInputStream());
+            BufferedImage bufferedImage =
+                    ImageIO.read(file.getInputStream());
             int width = bufferedImage.getWidth();
             int height = bufferedImage.getHeight();
             if(width == 0 || height == 0){
                 return null;
             }
             System.out.println("用户上传的是图片");
+
+            //第三步: 目录如何划分 yyyy/MM/dd
+            String dateDir = new SimpleDateFormat("/yyyy/MM/dd/")
+                            .format(new Date());
+            // E:/images + /2022/11/11/  拼接目录
+            String dirPath = localDir + dateDir;
+            File dirFile = new File(dirPath);
+            if(!dirFile.exists()){
+                //如果目录不存在时, 创建目录
+                dirFile.mkdirs();
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
