@@ -37,7 +37,8 @@ import {
   Step,
   CheckboxGroup,
   Checkbox,
-  Upload
+  Upload,
+  Rate
 
 } from 'element-ui'
 
@@ -77,6 +78,7 @@ Vue.use(Step)
 Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(Upload)
+Vue.use(Rate)
 
 //将弹框组件挂载到Vue对象中 用户可以使用this关键字调用
 Vue.prototype.$message = Message

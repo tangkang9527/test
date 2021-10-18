@@ -1,0 +1,8 @@
+127.0.0.1 ieonline.Microsoft.com
+#配置图片服务器
+127.0.0.1  image.jt.com
+#配置后端服务器
+127.0.0.1  manage.jt.com
+#配置前端服务器
+127.0.0.1  www.jt.com
+
