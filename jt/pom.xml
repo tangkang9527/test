@@ -30,10 +30,10 @@
         </dependency>
 
         <!--支持热部署 开发阶段有效-->
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--引入插件lombok 自动的set/get/构造方法插件  -->
         <dependency>
