@@ -140,8 +140,9 @@
         staticTableData: [],
 
         //定义文件上传路径地址
-        uploadUrl: "http://localhost:8091/file/upload",
-        //uploadUrl: "http://manage.harrylyj.com/file/upload",
+        //uploadUrl: "http://localhost:8091/file/upload",
+        uploadUrl: "http://manage.jt.com/file/upload",
+
         //定义图片网络访问地址
         imageUrlPath: "",
         //定义图片控制开关
