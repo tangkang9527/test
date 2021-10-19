@@ -15,7 +15,8 @@ import java.util.UUID;
 @Service
 public class FileServiceImpl implements FileService{
 
-    private String localDir = "E:/images";
+    //private String localDir = "E:/images";   windows系统目录
+    private String localDir = "/usr/local/src/images"; //Linux系统目录
     private String urlPath = "http://image.jt.com";
 
     /**
