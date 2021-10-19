@@ -16,7 +16,8 @@ import java.util.UUID;
 public class FileServiceImpl implements FileService{
 
     //private String localDir = "E:/images";   windows系统目录
-    private String localDir = "/usr/local/src/images"; //Linux系统目录
+    //Linux系统目录  修改之后重新打包部署 调试代码
+    private String localDir = "/usr/local/src/images";
     private String urlPath = "http://image.jt.com";
 
     /**
